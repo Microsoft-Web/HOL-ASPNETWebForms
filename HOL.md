@@ -109,7 +109,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Bind Customers Data Source_)
 
-	````
+	````C#
 	protected void Page_Load(object sender, EventArgs e)
 	{
 	  using (var db = new WebFormsLab.Model.ProductsContext())
@@ -134,7 +134,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 1. Open the **Customers.aspx** page and use the new **ItemType** attribute in the repeater to set the **Customer** type as the binding type.
 
-	````
+	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	  <ul>
 	    <asp:Repeater ID="customersRepeater" 
@@ -152,7 +152,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Costumer List Item_)
 
-	````
+	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	  ...
 	  <ul>
@@ -201,7 +201,7 @@ To learn about this, you will use a GridView to list the product categories usin
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Categories GridView_)
 
-	````
+	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">	
          <asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
@@ -219,7 +219,7 @@ To learn about this, you will use a GridView to list the product categories usin
 
 1. Use the new **SelectMethod** attribute to configure the GridView to call a **GetCategories** method to select the data.
 
-	````
+	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
 	    ItemType="WebFormsLab.Model.Category" DataKeyNames="CategoryId"
@@ -239,7 +239,7 @@ To learn about this, you will use a GridView to list the product categories usin
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Namespaces_)
 
-	````
+	````C#
 	using System.Data.Entity;
 	using System.Data.Entity.Infrastructure;
 	using WebFormsLab.Model;
@@ -247,7 +247,7 @@ To learn about this, you will use a GridView to list the product categories usin
 
 1. Add a private member in the **Products** class and assign a new instance of **ProductsContext**. This property will store the Entity Framework data context that enables you to connect to the database.
 
-	````
+	````C#
 	public partial class Products : System.Web.UI.Page
 	{
 	  private ProductsContext db = new ProductsContext();
@@ -258,7 +258,7 @@ To learn about this, you will use a GridView to list the product categories usin
 
 	(Code Snippet - _Web Forms Lab - Ex01 - GetCategories_)
 
-	````
+	````C#
 	public IQueryable<Category> GetCategories()
 	{
 	  var query = this.db.Categories
@@ -310,7 +310,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Categories DropDownList_)
 
-	````
+	````HTML
 	<h3>Categories</h3>
 	<asp:Label ID="Label1" runat="server" AssociatedControlID="minProductsCount">
              Show categories with at least this number of products:
@@ -328,7 +328,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 	(Code Snippet - _Web Forms Lab - Ex01 - No Categories Message_)
 
-	````
+	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
 	    ItemType="WebFormsLab.Model.Category" DataKeyNames="CategoryId"
@@ -349,7 +349,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 1. Open the **Products.aspx.cs** code-behind and add the following using statement (shown in **bold**).
 
-	````
+	````C#
 	using System.Data.Entity;
 	using System.Data.Entity.Infrastructure;
 	using WebFormsLab.Model; 
@@ -360,7 +360,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 	(Code Snippet - _Web Forms Lab - Ex01 - GetCategories 2_)
 
-	````
+	````C#
 	public IQueryable<Category> GetCategories([Control]int? minProductsCount)
 	{
 	  var query = this.db.Categories
@@ -396,7 +396,7 @@ In this task, you will add a second, child GridView to show the products within 
 
 1. Open the **Products.aspx** page and update the categories GridView to auto-generate the Select button.
 
-	````	
+	````HTML	
 <asp:GridView ID="categoriesGrid" runat="server"
 	  AutoGenerateColumns="false"
 	  ItemType="WebFormsLab.Model.Category" DataKeyNames="CategoryId"
@@ -408,7 +408,7 @@ In this task, you will add a second, child GridView to show the products within 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Products GridView_)
 
-	````
+	````HTML
 	<h3>Products</h3>
 	<asp:GridView ID="productsGrid" runat="server" 
 	    CellPadding="4"
@@ -432,7 +432,7 @@ In this task, you will add a second, child GridView to show the products within 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - GetProducts_)
 
-	````
+	````C#
 	public IEnumerable<WebFormsLab.Model.Product> GetProducts([Control("categoriesGrid")]int? categoryId)
 	{
 	  return this.db.Products.Where(p => p.CategoryId == categoryId);
@@ -445,7 +445,7 @@ In this task, you will add a second, child GridView to show the products within 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Edit Product Link_)
 
-	````
+	````HTML
 	<h3>Products</h3>
 	<asp:GridView ID="productsGrid" runat="server" 
 	  CellPadding="4"
@@ -474,7 +474,7 @@ In this task, you will add a second, child GridView to show the products within 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - SelectProduct Method_)
 
-	````
+	````C#
 	public Product SelectProduct([QueryString]int? productId)
 	{
 	  return this.db.Products.Find(productId);
@@ -507,7 +507,7 @@ You will update the categories GridView to let the user update categories.
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Enable Categories Update_)
 
-	````
+	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
 	    CellPadding="4"
@@ -524,7 +524,7 @@ You will update the categories GridView to let the user update categories.
 
 	(Code Snippet - _Web Forms Lab - Ex01 - UpdateCategory_)
 
-	````
+	````C#
 	public void UpdateCategory(int categoryId)
 	{
 	  var category = this.db.Categories.Find(categoryId);
@@ -589,7 +589,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Now you will enable unobtrusive validation. Open **Web.Config** and locate **ValidationSettings:UnobtrusiveValidationMode** key in the **AppSettings** section**.** Set the key value to **WebForms**.
 
-	````
+	````XML
 	<configuration>
 	  ...
 	  <appSettings>
@@ -601,7 +601,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Open the **Global.asax.cs** file and add the following using statement (shown in bold) (Code Snippet _- Web Forms Lab - Ex02 - Using statements)_
 
-	````
+	````C#
 	using System.Web.SessionState;
 	using WebFormsLab.Model;
 	using System.Web.ModelBinding;
@@ -609,7 +609,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Within the **Application_Start** method of the **Global.asax.cs** file, add the following code (Code Snippet _- Web Forms Lab - Ex02 - ScriptREsourceDefinition)_
 
-	````
+	````C#
 	ScriptResourceDefinition myScriptResDef = new ScriptResourceDefinition();
 	myScriptResDef.Path = "~/Assets/Scripts/jquery-1.7.1.min.js";
 	myScriptResDef.DebugPath = "~/Assets/Scripts/jquery-1.7.1.js";
@@ -620,7 +620,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Open **Site.Master.** Add the code below to include a **ScriptManager** on the page to include a script reference to the jQuery client library. (Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
 
-	````
+	````HTML
 	<form runat="server">
 	
 	<asp:ScriptManager ID="uxScriptManagerMasterPage" runat="server" EnableCdn="False">
@@ -667,7 +667,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 	(Code Snippet -_Web Forms Lab - Ex02 - Data Annotation_s)
 
-	````
+	````C#
 	namespace WebFormsLab.Model
 	{
 	  using System.Collections.Generic;
@@ -712,7 +712,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 1. Open **CustomerDetails.aspx** and remove all the RequiredFieldvalidators for the first and last name fields in the in EditItemTemplate and InsertItemTemplate sections of the FormView control.
 	<!-- strike:9,17,29,37 -->
-	````
+	````HTML
 	<EditItemTemplate>
 	  <fieldset>
 	  <ul>
@@ -760,7 +760,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 	The ModelState.IsValid will only return true if all the fields on your model are valid after performing the validation.
 
-	````
+	````C#
 	public void SaveCustomer(Customer customer) 
 	{
 	  if (ModelState.IsValid)
@@ -774,12 +774,13 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 	(Code Snippet - _Web Forms Lab - Ex02 - ValidationSummary_)
 
-	````
+	````HTML
 	      </fieldset>
 	    </InsertItemTemplate>
 	  </asp:FormView>
 	
-	  <asp:ValidationSummary runat="server" ShowModelStateErrors="true" ForeColor="Red" HeaderText="Please check the following errors:"/>
+	  <asp:ValidationSummary runat="server" ShowModelStateErrors="true" 
+           ForeColor="Red" HeaderText="Please check the following errors:"/>
 	</asp:Content>
 	````
 
@@ -818,7 +819,7 @@ In this task, you will add code to properly handle database exceptions and show 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - UpdateCategory Handle Errors_)
 
-	````
+	````C#
 	public void UpdateCategory(int categoryId)
 	{
 	  var category = this.db.Categories.Find(categoryId);
@@ -833,7 +834,9 @@ In this task, you will add code to properly handle database exceptions and show 
 	    }
 	    catch (DbUpdateException)
 	    {
-	       ModelState.AddModelError("CategoryName", string.Format("A category with the name {0} already exists.", category.CategoryName));
+	       ModelState.AddModelError("CategoryName", 
+                string.Format("A category with the name {0} already exists.", 
+                category.CategoryName));
 	    }
 	  }
 	}
@@ -888,9 +891,10 @@ The request validation feature in ASP.NET provides a certain level of default pr
 
 	The new **ValidateRequestMode** attribute allows you to disable the request validation granularly on each control. This is useful when you want to use an input that may receive HTML code, but want to keep the validation working for the rest of the page.
 
-	````
+	````HTML
 	<li>
-	  <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" Cols="60" Rows="8" Text='<%# BindItem.Description %>' 
+	  <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" 
+                Cols="60" Rows="8" Text='<%# BindItem.Description %>' 
 	    ValidateRequestMode="Disabled" />
 	</li>
 	````
@@ -911,10 +915,11 @@ The request validation feature in ASP.NET provides a certain level of default pr
 
 1. Now open Web.config and check the **HttpRuntime** element, notice the new 4.5 validation mode.
 
-	````
+	````XML
 	<system.web>
 	   ...
-	  <httpRuntime requestValidationMode="4.5" encoderType="System.Web.Security.AntiXss.AntiXssEncoder, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+	  <httpRuntime requestValidationMode="4.5" encoderType="System.Web.Security.AntiXss.AntiXssEncoder, 
+                        System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 	 
 	</system.web>
 	````
@@ -947,19 +952,31 @@ In this task, you will update the product details page to allow the user to spec
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Show Product Image_)
 
-	````
+	````HTML
 	<ItemTemplate>
 	  <fieldset>
 	    <ul>
-	      <li><b><asp:Label ID="Label2" runat="server" AssociatedControlID="itemProductName">Name:</asp:Label></b></li>
+	      <li><b><asp:Label ID="Label2" runat="server" AssociatedControlID="itemProductName">
+                           Name:
+                      </asp:Label>
+                   </b>
+               </li>
 	      <li><asp:Label runat="server" ID="itemProductName" Text='<%# Item.ProductName %>' /></li>
-	      <li><b><asp:Label ID="Label3" runat="server" AssociatedControlID="itemDescription">Description (HTML):</asp:Label></b></li>
+	      <li><b><asp:Label ID="Label3" runat="server" AssociatedControlID="itemDescription">
+                           Description (HTML):
+                      </asp:Label></b></li>
 	      <li><asp:Label runat="server" ID="itemDescription" Text='<%# Item.Description %>' /></li>
-	      <li><b><asp:Label ID="Label4" runat="server" AssociatedControlID="itemUnitPrice">Price:</asp:Label></b></li>
+	      <li><b><asp:Label ID="Label4" runat="server" AssociatedControlID="itemUnitPrice">
+                           Price:
+                      </asp:Label></b></li>
 	      <li><asp:Label runat="server" ID="itemUnitPrice" Text='<%# Item.UnitPrice %>' /></li>
 	
-	      <li><b><asp:Label ID="Label5" runat="server" AssociatedControlID="itemUnitPrice">Image:</asp:Label></b></li>
-	      <li><img src="<%# string.IsNullOrEmpty(Item.ImagePath) ? "/Images/noimage.jpg" : Item.ImagePath %>" alt="Image" /></li>
+	      <li><b><asp:Label ID="Label5" runat="server" AssociatedControlID="itemUnitPrice">
+                           Image:
+                      </asp:Label></b></li>
+	      <li>
+   <img src="<%# string.IsNullOrEmpty(Item.ImagePath) ? "/Images/noimage.jpg" : Item.ImagePath %>" alt="Image" />
+               </li>
 	    </ul>
 	    <br />
 	    <ul>
@@ -976,7 +993,7 @@ In this task, you will update the product details page to allow the user to spec
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Edit Image URL_)
 
-	````
+	````HTML
 	<EditItemTemplate>
 	  <fieldset>
 	    <ul>
@@ -1006,7 +1023,7 @@ In this task, you will update the product details page to allow the user to spec
 
 	(Code Snippet - _Web Forms Lab - Ex03 - UpdateProductImage_)
 
-	````
+	````C#
 	private void UpdateProductImage(Product product)
 	{
 	  string imageUrl = product.ImagePath;
@@ -1027,7 +1044,7 @@ In this task, you will update the product details page to allow the user to spec
 
 	(Code Snippet - _Web Forms Lab - Ex03 - UpdateProductImage Call_)
 
-	````
+	````C#
 	public void UpdateProduct(int productId)
 	{
 	    var product = this.db.Products.Find(productId);
@@ -1068,7 +1085,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 1. Open the **ProductDetails.aspx** page. Add the **Async** attribute in the **Page** element and set it to **true**. This attribute tells ASP.NET to implement the IHttpAsyncHandler interface.
 
-	````
+	````HTML
 	<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
 	    CodeBehind="ProductDetails.aspx.cs" Inherits="WebFormsLab.ProductDetails"
 	    Async="true" %>
@@ -1078,7 +1095,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Threads Message Label_)
 
-	````
+	````HTML
 	    <EmptyDataTemplate>Product not found</EmptyDataTemplate>
 	  </asp:FormView>
 	
@@ -1090,7 +1107,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Namespaces 2_)
 
-	````
+	````C#
 	using System.Threading;
 	````
 
@@ -1098,7 +1115,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - UpdateProductImage Async_)
 
-	````
+	````C#
 	private void UpdateProductImage(Product product)
 	{
 	  string imageUrl = product.ImagePath;
@@ -1124,7 +1141,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Show threads_)
 
-	````
+	````C#
 	private void UpdateProductImage(Product product)
 	{
 	  string imageUrl = product.ImagePath;
@@ -1144,7 +1161,8 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	
 	      var endThread = Thread.CurrentThread.ManagedThreadId;
 	
-	      threadsMessageLabel.Text = string.Format("Started on thread: {0}<br /> Finished on thread: {1}", startThread, endThread);
+	      threadsMessageLabel.Text = 
+               string.Format("Started on thread: {0}<br /> Finished on thread: {1}", startThread, endThread);
 	    }));
 	  }
 	}
@@ -1152,7 +1170,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 1. Open the web site's **web.config** file. Add the following appSetting variable. 
 
-	````
+	````XML
 	<add key="aspnet:UseTaskFriendlySynchronizationContext" value="true"/>
 	````
 
