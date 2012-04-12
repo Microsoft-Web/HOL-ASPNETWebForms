@@ -33,7 +33,7 @@ In this hands-on lab, you will learn how to:
  
 ### Prerequisites ###
 
-- [Microsoft Visual Studio 11 Ultimate Beta](http://go.microsoft.com/fwlink/?LinkId=240160)
+- [Microsoft Visual Studio 11 Beta](http://go.microsoft.com/fwlink/?LinkId=240160)
 
 - [Windows PowerShell](http://support.microsoft.com/kb/968930/) (for setup scripts - already installed on Windows 7 and Windows Server 2008 R2)
 
