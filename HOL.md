@@ -8,7 +8,7 @@ In previous versions of Web Forms, when using data-binding to emit the value of 
 
 With the data-bound controls, you can now also specify your own custom methods for selecting, updating, deleting and inserting data, simplifying the interaction between the page controls and your application logic. Additionally, model binding capabilities have been added to ASP.NET, which means you can map data from the page directly into method type parameters.
 
-Validating user input should also be easier with the latest version of Web Forms. You can now annotate your model classes with validation attributes from the System.ComponentModel.DataAnnotations namespace and request that all your site controls validate user input using that information. Client-side validation in Web Forms is now integrated with jQuery, providing cleaner client-side code and unobtrusive JavaScript features.
+Validating user input should also be easier with the latest version of Web Forms. You can now annotate your model classes with validation attributes from the **System.ComponentModel.DataAnnotations** namespace and request that all your site controls validate user input using that information. Client-side validation in Web Forms is now integrated with jQuery, providing cleaner client-side code and unobtrusive JavaScript features.
 
 Lastly, in the request validation area, improvements have been made to make it easier to selectively turn off request validation for specific parts of your applications or read invalidated request data.
 
@@ -926,7 +926,7 @@ The request validation feature in ASP.NET provides a certain level of default pr
 
 	ASP.NET Web Forms 4.5 includes a new request validation mode to perform request validation lazily. With the request validation mode set to **4.5**, if a piece of code accesses _Request.Form["key"]_, ASP.NET 4.5's request validation will only trigger request validation for that specific element in the form collection.
 
-	Additionally, ASP.NET 4.5 now includes core encoding routines from the Microsoft Anti-XSS Library v4.0. The Anti-XSS encoding routines are implemented by the new _AntiXssEncoder_ type found in the new _System.Web.Security.AntiXss_ namespace. With the **encoderType** parameter configured to use _AntiXssEncoder_, all output encoding within ASP.NET automatically uses the new encoding routines.
+	Additionally, ASP.NET 4.5 now includes core encoding routines from the Microsoft Anti-XSS Library v4.0. The Anti-XSS encoding routines are implemented by the new _AntiXssEncoder_ type found in the new **System.Web.Security.AntiXss** namespace. With the **encoderType** parameter configured to use _AntiXssEncoder_, all output encoding within ASP.NET automatically uses the new encoding routines.
 
 1. ASP.NET 4.5 request validation also supports un-validated access to request data. ASP.NET 4.5 adds a new collection property to the **HttpRequest** object called **Unvalidated**. When you navigate into **HttpRequest.Unvalidated** you have access to all of the common pieces of request data, including Forms, QueryStrings, Cookies, URLs, and so on.
 
