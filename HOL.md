@@ -455,7 +455,8 @@ In this task, you will add a second, child GridView to show the products within 
 	  SelectMethod="GetProducts">
 	  <Columns>
 	    <asp:TemplateField>
-	      <ItemTemplate><a href="ProductDetails.aspx?productId=<%#: Item.ProductId %>">View</a></ItemTemplate>
+	      <ItemTemplate><a href="ProductDetails.aspx?productId=<%#: Item.ProductId %>">View</a>
+               </ItemTemplate>
 	    </asp:TemplateField>
 	    <asp:BoundField DataField="ProductId" HeaderText="ID" />
 	    <asp:BoundField DataField="ProductName" HeaderText="Name" />
@@ -720,7 +721,8 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 	    <li><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' />
 	
 	      <!-- Remove the following line-->
-	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
+	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" 
+                          ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
 	    </li>
 	  </ul>
 	  <ul>
@@ -728,7 +730,8 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 	    <li><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
 	
 	      <!-- Remove the following line-->
-	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
+	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" 
+                          ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
 	    </li>
 	  </ul>
 	  <ul>
@@ -740,7 +743,8 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 	      <li><asp:TextBox runat="server" ID="firstName" Text='<%# BindItem.FirstName %>' />
 	
 	      <!-- Remove the following line-->
-	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
+	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" 
+                          ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
 	      </li>
 	    </ul>
 	    <ul>
@@ -748,7 +752,8 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 	      <li><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
 	
 	        <!-- Remove the following line-->
-	        &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
+	        &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" 
+                            ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
 	      </li>
 	  </ul>
 	  <ul>
@@ -848,7 +853,7 @@ In this task, you will add code to properly handle database exceptions and show 
 
 	(Code Snippet - _Web Forms Lab - Ex02 - Categories ValidationSummary_)
 
-	````
+	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	  ...
 	</asp:GridView>
@@ -975,7 +980,8 @@ In this task, you will update the product details page to allow the user to spec
                            Image:
                       </asp:Label></b></li>
 	      <li>
-   <img src="<%# string.IsNullOrEmpty(Item.ImagePath) ? "/Images/noimage.jpg" : Item.ImagePath %>" alt="Image" />
+                   <img src="<%# string.IsNullOrEmpty(Item.ImagePath) ? "/Images/noimage.jpg" : 
+                   Item.ImagePath %>" alt="Image" />
                </li>
 	    </ul>
 	    <br />
@@ -997,15 +1003,21 @@ In this task, you will update the product details page to allow the user to spec
 	<EditItemTemplate>
 	  <fieldset>
 	    <ul>
-	      <li><asp:Label ID="Label2" runat="server" AssociatedControlID="ProductName">Name:</asp:Label></li>
+	      <li><asp:Label ID="Label2" runat="server" AssociatedControlID="ProductName">
+                        Name:</asp:Label></li>
 	      <li><asp:TextBox runat="server" ID="ProductName" Text='<%# BindItem.ProductName %>' /></li>
-	      <li><asp:Label ID="Label3" runat="server" AssociatedControlID="Description">Description (HTML):</asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="Description" TextMode="MultiLine" Cols="60" Rows="8" Text='<%# BindItem.Description %>' ValidateRequestMode="Disabled" />
+	      <li><asp:Label ID="Label3" runat="server" AssociatedControlID="Description">
+                        Description (HTML):</asp:Label></li>
+	      <li><asp:TextBox runat="server" ID="Description" TextMode="MultiLine" 
+                         Cols="60" Rows="8" Text='<%# BindItem.Description %>' 
+                         ValidateRequestMode="Disabled" />
 	      </li>
-	      <li><asp:Label ID="Label4" runat="server" AssociatedControlID="UnitPrice">Price:</asp:Label></li>
+	      <li><asp:Label ID="Label4" runat="server" AssociatedControlID="UnitPrice">
+                        Price:</asp:Label></li>
 	      <li><asp:TextBox runat="server" ID="UnitPrice" Text='<%# BindItem.UnitPrice %>' /></li>
 	
-	      <li><asp:Label ID="Label1" runat="server" AssociatedControlID="ImagePath">Image URL:</asp:Label></li>
+	      <li><asp:Label ID="Label1" runat="server" AssociatedControlID="ImagePath">
+                        Image URL:</asp:Label></li>
 	      <li><asp:TextBox runat="server" ID="ImagePath" Text='<%#:  BindItem.ImagePath %>' /></li>
 	    </ul>
 	    <br />
@@ -1122,7 +1134,9 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	
 	  if (!string.IsNullOrEmpty(imageUrl) && !VirtualPathUtility.IsAbsolute(imageUrl))
 	  {
-	    product.ImagePath = string.Format("/Images/{0}{1}", product.ProductId, Path.GetExtension(imageUrl));
+	    product.ImagePath = string.Format("/Images/{0}{1}", 
+             product.ProductId, 
+             Path.GetExtension(imageUrl));
 	
 	    RegisterAsyncTask(new PageAsyncTask(async(t) =>
 	    {
@@ -1148,7 +1162,9 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	
 	  if (!string.IsNullOrEmpty(imageUrl) && !VirtualPathUtility.IsAbsolute(imageUrl))
 	  {
-	    product.ImagePath = string.Format("/Images/{0}{1}", product.ProductId, Path.GetExtension(imageUrl));
+	    product.ImagePath = string.Format("/Images/{0}{1}", 
+             product.ProductId, 
+             Path.GetExtension(imageUrl));
 	
 	    RegisterAsyncTask(new PageAsyncTask(async(t) =>
 	    {
@@ -1156,7 +1172,8 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	
 	      using (var wc = new WebClient())
 	      {
-	        await wc.DownloadFileTaskAsync(imageUrl, Server.MapPath(product.ImagePath));
+	        await wc.DownloadFileTaskAsync(imageUrl, 
+                 Server.MapPath(product.ImagePath));
 	      }
 	
 	      var endThread = Thread.CurrentThread.ManagedThreadId;
