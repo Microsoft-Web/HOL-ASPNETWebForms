@@ -1042,7 +1042,9 @@ In this task, you will update the product details page to allow the user to spec
 	
 	  if (!string.IsNullOrEmpty(imageUrl) && !VirtualPathUtility.IsAbsolute(imageUrl))
 	  {
-	    product.ImagePath = string.Format("/Images/{0}{1}", product.ProductId, Path.GetExtension(imageUrl));
+	    product.ImagePath = string.Format("/Images/{0}{1}", 
+                                 product.ProductId, 
+                                 Path.GetExtension(imageUrl));
 	
 	    using (var wc = new WebClient())
 	    {
