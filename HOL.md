@@ -86,7 +86,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Customers Repeater_)
 
-	````
+	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	  ...
 	  <ul>
