@@ -300,7 +300,7 @@ Model binding not only enables you to specify custom methods to work with your d
 
 - Custom value providers are supported as well
 
-If you have used ASP.NET MVC, you will notice the model binding support is similar. Indeed, these features were taken from ASP.NET MVC and moved into the System.Web assembly to be able to use them on Web Forms as well.
+If you have used ASP.NET MVC, you will notice the model binding support is similar. Indeed, these features were taken from ASP.NET MVC and moved into the **System.Web** assembly to be able to use them on Web Forms as well.
 
 In this task, you will update the GridView to filter its results by the amount of products for each category, receiving the filter parameter with model binding.
 
