@@ -1179,7 +1179,8 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	      var endThread = Thread.CurrentThread.ManagedThreadId;
 	
 	      threadsMessageLabel.Text = 
-               string.Format("Started on thread: {0}<br /> Finished on thread: {1}", startThread, endThread);
+               string.Format("Started on thread: {0}<br /> Finished on thread: {1}", 
+                              startThread, endThread);
 	    }));
 	  }
 	}
