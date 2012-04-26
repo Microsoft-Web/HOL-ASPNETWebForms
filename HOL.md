@@ -600,7 +600,9 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 	> **Note:** You can also set this property in the "**Page_Load**" event in case you want to enable Unobtrusive Validation only for some pages.
 
-1. Open the **Global.asax.cs** file and add the following using statement (shown in bold) (Code Snippet _- Web Forms Lab - Ex02 - Using statements)_
+1. Open the **Global.asax.cs** file and add the following using statement (shown in bold) 
+
+(Code Snippet _- Web Forms Lab - Ex02 - Using statements)_
 
 	````C#
 	using System.Web.SessionState;
@@ -608,7 +610,9 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 	using System.Web.ModelBinding;
 	````
 
-1. Within the **Application_Start** method of the **Global.asax.cs** file, add the following code (Code Snippet _- Web Forms Lab - Ex02 - ScriptREsourceDefinition)_
+1. Within the **Application_Start** method of the **Global.asax.cs** file, add the following code 
+
+(Code Snippet _- Web Forms Lab - Ex02 - ScriptResourceDefinition)_
 
 	````C#
 	ScriptResourceDefinition myScriptResDef = new ScriptResourceDefinition();
@@ -619,7 +623,9 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 	ScriptManager.ScriptResourceMapping.AddDefinition("jquery", null, myScriptResDef);
 	````
 
-1. Open **Site.Master.** Add the code below to include a **ScriptManager** on the page to include a script reference to the jQuery client library. (Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
+1. Open **Site.Master.** Add the code below to include a **ScriptManager** on the page to include a script reference to the jQuery client library. 
+
+(Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
 
 	````HTML
 	<form runat="server">
@@ -666,7 +672,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 1. Add data annotations to validate the Customer model class. Open **Customer.cs** class in the **Model** folder and _decorate_ each property using data annotation attributes.
 
-	(Code Snippet -_Web Forms Lab - Ex02 - Data Annotation_s)
+	(Code Snippet -_Web Forms Lab - Ex02 - Data Annotations_)
 
 	````C#
 	namespace WebFormsLab.Model
