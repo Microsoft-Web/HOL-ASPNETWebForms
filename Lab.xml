@@ -2,8 +2,10 @@
 <Lab xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/ContentFramework.Core.Models">
   <Id>AspNetWebForms45</Id>
   <Author>
-    <Blog></Blog>
-    <Email></Email>
+    <Blog>
+    </Blog>
+    <Email>
+    </Email>
     <Name></Name>
   </Author>
   <Description>ASP.NET Web Forms 4.5 introduces a number of improvements focused on improving the experience when working with data. These include strongly-typed data controls, model binding capabilities, new request validation features and asynchronous page processing enhancements. In this lab, you will get a chance to try out these new features and learn how they work.</Description>
