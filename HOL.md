@@ -602,32 +602,32 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Open the **Global.asax.cs** file and add the following using statement (shown in bold) 
 
-(Code Snippet _- Web Forms Lab - Ex02 - Using statements)_
+(Code Snippet _- Web Forms Lab - Ex02 - Using statements_)
 
-	````C#
+````C#
 	using System.Web.SessionState;
 	using WebFormsLab.Model;
 	using System.Web.ModelBinding;
-	````
+````
 
 1. Within the **Application_Start** method of the **Global.asax.cs** file, add the following code 
 
 (Code Snippet _- Web Forms Lab - Ex02 - ScriptResourceDefinition)_
 
-	````C#
+````C#
 	ScriptResourceDefinition myScriptResDef = new ScriptResourceDefinition();
 	myScriptResDef.Path = "~/Assets/Scripts/jquery-1.7.1.min.js";
 	myScriptResDef.DebugPath = "~/Assets/Scripts/jquery-1.7.1.js";
 	myScriptResDef.CdnPath = "http://code.jquery.com/jquery-1.7.1.min.js";
 	myScriptResDef.CdnDebugPath = "http://code.jquery.com/jquery-1.7.1.js";
 	ScriptManager.ScriptResourceMapping.AddDefinition("jquery", null, myScriptResDef);
-	````
+````
 
 1. Open **Site.Master.** Add the code below to include a **ScriptManager** on the page to include a script reference to the jQuery client library. 
 
 (Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
 
-	````HTML
+````HTML
 	<form runat="server">
 	
 	<asp:ScriptManager ID="uxScriptManagerMasterPage" runat="server" EnableCdn="False">
@@ -637,7 +637,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 	</asp:ScriptManager>
 	
 	...
-	````
+````
 
 1. Open **CustomerDetails.aspx** and press **F5** to start the Web application. 
 
