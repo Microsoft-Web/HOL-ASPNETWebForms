@@ -625,17 +625,17 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Open **Site.Master.** Add the code below to include a **ScriptManager** on the page to include a script reference to the jQuery client library. 
 
-(Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
+	(Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
 
-````HTML
-<form runat="server">
-
-<asp:ScriptManager ID="uxScriptManagerMasterPage" runat="server" EnableCdn="False">
-     <Scripts>
-          <asp:ScriptReference Name="jquery" />
-     </Scripts>
-</asp:ScriptManager>
-````
+	````HTML
+	<form runat="server">
+	
+	<asp:ScriptManager ID="uxScriptManagerMasterPage" runat="server" EnableCdn="False">
+	     <Scripts>
+	          <asp:ScriptReference Name="jquery" />
+	     </Scripts>
+	</asp:ScriptManager>
+	````
 
 1. Open **CustomerDetails.aspx** and press **F5** to start the Web application. 
 
