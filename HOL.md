@@ -627,7 +627,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 (Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
 
-	````HTML
+````HTML
 	<form runat="server">
 	
 	<asp:ScriptManager ID="uxScriptManagerMasterPage" runat="server" EnableCdn="False">
@@ -635,7 +635,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 	          <asp:ScriptReference Name="jquery" />
 	     </Scripts>
 	</asp:ScriptManager>
-	````
+````
 
 1. Open **CustomerDetails.aspx** and press **F5** to start the Web application. 
 
