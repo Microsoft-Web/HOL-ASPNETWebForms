@@ -718,7 +718,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 	> You can also define your own error messages within each attribute.
 
 1. Open **CustomerDetails.aspx** and remove all the RequiredFieldvalidators for the first and last name fields in the in EditItemTemplate and InsertItemTemplate sections of the FormView control.
-	<!-- strike:9,17,29,37 -->
+	
 	````HTML
 	<EditItemTemplate>
 	  <fieldset>
