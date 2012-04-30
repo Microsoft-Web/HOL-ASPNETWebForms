@@ -1253,7 +1253,7 @@ _Right-click where you want to insert the code snippet and select Insert Snippet
  
 _Pick the relevant snippet from the list, by clicking on it_
 
-### Summary ###
+## Summary ##
 
 In this hands-on lab, the following concepts have been addressed and demonstrated:
 
