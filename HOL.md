@@ -28,7 +28,7 @@ In this hands-on lab, you will learn how to:
 
 - Implement granular request validation
 
-- Implement asyncrhornous page processing in Web Forms
+- Implement asynchronous page processing in Web Forms
 
  
 ### Prerequisites ###
@@ -1252,3 +1252,21 @@ _Right-click where you want to insert the code snippet and select Insert Snippet
  ![Pick the relevant snippet from the list, by clicking on it](./images/Pick-the-relevant-snippet-from-the-list,-by-clicking-on-it.png?raw=true "Pick the relevant snippet from the list, by clicking on it")
  
 _Pick the relevant snippet from the list, by clicking on it_
+
+### Summary ###
+
+In this hands-on lab, the following concepts have been addressed and demonstrated:
+
+- Use strongly-typed data-binding expressions
+
+- Use new model binding features in Web Forms
+
+- Use value providers for mapping page data to code-behind methods
+
+- Use Data Annotations for user input validation
+
+- Take advange of unobstrusive client-side validation with jQuery in Web Forms
+
+- Implement granular request validation
+
+- Implement asynchronous page processing in Web Forms
