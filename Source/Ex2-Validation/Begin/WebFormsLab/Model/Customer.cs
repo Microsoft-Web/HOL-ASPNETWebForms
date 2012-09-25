@@ -11,13 +11,13 @@ namespace WebFormsLab.Model
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-        
+
         public int Age { get; set; }
 
         public Address Address { get; set; }
-        
+
         public string DaytimePhone { get; set; }
-    
+
         public string EmailAddress { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 namespace WebFormsLab.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
-    using System;
 
     public class ProductsDatabaseInitializer : DropCreateDatabaseAlways<ProductsContext>
     {

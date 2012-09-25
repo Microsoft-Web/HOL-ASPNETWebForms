@@ -33,23 +33,14 @@ In this hands-on lab, you will learn how to:
  
 ### Prerequisites ###
 
-- [Microsoft Visual Studio 11 Beta](http://go.microsoft.com/fwlink/?LinkId=240160)
+- [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix B](#AppendixB) for instructions on how to install it).
 
 - [Windows PowerShell](http://support.microsoft.com/kb/968930/) (for setup scripts - already installed on Windows 7 and Windows Server 2008 R2)
 
  
-### Setup ###
+### Installing Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of that code is provided as Visual Studio Code Snippets, which you can use from within Visual Studio to avoid having to add it manually.
-
-To install the code snippets:
-
-1. Open a Windows Explorer window and browse to the lab's **Source\Setup** folder.
-
-1. Double-click the **Setup.cmd** file in this folder to install the Visual Studio code snippets.
-
- 
-If you are not familiar with the Visual Studio Code Snippets, and want to learn how to use them, you can refer to the appendix from this document **'Appendix: Using Code Snippets'**.
+For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Setup\CodeSnippets.vsi** file.
 
 ## Exercises ##
 
@@ -74,7 +65,7 @@ The new version of ASP.NET Web Forms introduces a number of enhancements focused
 
 In this task, you will discover the new strongly-typed bindings available in ASP.NET 4.5.
 
-1. Open **Visual Studio 11** and open the **WebFormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-ModelBinding\Begin** folder of this lab.
+1. Open **Visual Studio 2012** and open the **WebFormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-ModelBinding\Begin** folder of this lab.
 
 1. Open the **Customers.aspx** page. Place an unnumbered list in the main control and include a repeater control inside for listing each customer. Set the repeater name to **customersRepeater** as shown in the following code.
 
@@ -86,9 +77,11 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Customers Repeater_)
 
+	<!-- mark:4-13 -->
 	````HTML
-	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	  ...
+	...
+	<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+	  <h3>Customers</h3>
 	  <ul>
 	    <asp:Repeater ID="customersRepeater" runat="server">
 	      <ItemTemplate>
@@ -99,7 +92,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 	      </ItemTemplate>
 	    </asp:Repeater>
 	  </ul>
-	  <a href="CustomerDetails.aspx"> Add a New Customer</a>
+	  <a href="CustomerDetails.aspx">Add a New Customer</a>
 	</asp:Content>
 	````
 
@@ -109,6 +102,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Bind Customers Data Source_)
 
+	<!-- mark:3-7 -->
 	````C#
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -128,21 +122,25 @@ In this task, you will discover the new strongly-typed bindings available in ASP
  
 	_Listing the customers with a repeater_
 
-	>**Note:** In Visual Studio 11, IIS Express is the default Web development server.
+	>**Note:** In Visual Studio 2012, IIS Express is the default Web development server.
 
 1. Close the browser and go back to Visual Studio.
 
 1. Open the **Customers.aspx** page and use the new **ItemType** attribute in the repeater to set the **Customer** type as the binding type.
 
+	<!-- mark:4 -->
 	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	  <ul>
 	    <asp:Repeater ID="customersRepeater" 
 	                  ItemType="WebFormsLab.Model.Customer" 
 	                  runat="server">
-	      <ItemTemplate>	         ...	      </ItemTemplate>
+	      <ItemTemplate>
+	         ...
+	      </ItemTemplate>
 	    </asp:Repeater>
 	  </ul>
+	  <a href="CustomerDetails.aspx">Add a New Customer</a>
 	</asp:Content>
 	````
 
@@ -152,6 +150,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Costumer List Item_)
 
+	<!-- mark:7-9 -->
 	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	  ...
@@ -166,6 +165,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 	      </ItemTemplate>
 	    </asp:Repeater>
 	  </ul>
+	  <a href="CustomerDetails.aspx">Add a New Customer</a>
 	</asp:Content>
 	````
 
@@ -200,25 +200,27 @@ To learn about this, you will use a GridView to list the product categories usin
 1. Open the **Products.aspx** page and include a **GridView**. Configure the GridView as shown below to use strongly-typed bindings and enable sorting and paging.
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Categories GridView_)
-
+	<!-- mark:2-13 -->
 	````HTML
-	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">	
-         <asp:GridView ID="categoriesGrid" runat="server"
+	<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+     <asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
 	    ItemType="WebFormsLab.Model.Category" DataKeyNames="CategoryID">
-	  <Columns>
-	    <asp:BoundField DataField="CategoryId" HeaderText="ID" SortExpression="CategoryId" />
-	    <asp:BoundField DataField="CategoryName" HeaderText="Name" SortExpression="CategoryName" />
-	    <asp:BoundField DataField="Description" HeaderText="Description" />
-	    <asp:TemplateField HeaderText="# of Products">
-	      <ItemTemplate><%#: Item.Products.Count %></ItemTemplate>
-	    </asp:TemplateField>
-	  </Columns>
-	</asp:GridView>
+	    <Columns>
+	      <asp:BoundField DataField="CategoryId" HeaderText="ID" SortExpression="CategoryId" />
+	      <asp:BoundField DataField="CategoryName" HeaderText="Name" SortExpression="CategoryName" />
+	      <asp:BoundField DataField="Description" HeaderText="Description" />
+	      <asp:TemplateField HeaderText="# of Products">
+	        <ItemTemplate><%#: Item.Products.Count %></ItemTemplate>
+	      </asp:TemplateField>
+	    </Columns>
+	  </asp:GridView>
+	</asp:Content>
 	````
 
 1. Use the new **SelectMethod** attribute to configure the GridView to call a **GetCategories** method to select the data.
 
+	<!-- mark:4 -->
 	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
@@ -240,13 +242,16 @@ To learn about this, you will use a GridView to list the product categories usin
 	(Code Snippet - _Web Forms Lab - Ex01 - Namespaces_)
 
 	````C#
+	using System.Collections.Generic;
 	using System.Data.Entity;
 	using System.Data.Entity.Infrastructure;
+	using System.Linq;
 	using WebFormsLab.Model;
 	````
 
 1. Add a private member in the **Products** class and assign a new instance of **ProductsContext**. This property will store the Entity Framework data context that enables you to connect to the database.
 
+	<!-- mark:3 -->
 	````C#
 	public partial class Products : System.Web.UI.Page
 	{
@@ -313,8 +318,8 @@ In this task, you will update the GridView to filter its results by the amount o
 	````HTML
 	<h3>Categories</h3>
 	<asp:Label ID="Label1" runat="server" AssociatedControlID="minProductsCount">
-             Show categories with at least this number of products:
-         </asp:Label>
+		 Show categories with at least this number of products:
+	</asp:Label>
 	<asp:DropDownList runat="server" ID="minProductsCount" AutoPostBack="true">
 	  <asp:ListItem Value="" Text="-" />
 	  <asp:ListItem Text="1" />
@@ -328,6 +333,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 	(Code Snippet - _Web Forms Lab - Ex01 - No Categories Message_)
 
+	<!-- mark:13-15 -->
 	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
@@ -342,17 +348,14 @@ In this task, you will update the GridView to filter its results by the amount o
 	    </asp:TemplateField>
 	  </Columns>
 	  <EmptyDataTemplate>
-              No categories found with a product count of <%#: minProductsCount.SelectedValue %>
-           </EmptyDataTemplate>
+		  No categories found with a product count of <%#: minProductsCount.SelectedValue %>
+	  </EmptyDataTemplate>
 	</asp:GridView>
 	````
 
-1. Open the **Products.aspx.cs** code-behind and add the following using statement (shown in **bold**).
+1. Open the **Products.aspx.cs** code-beusing System.Web.ModelBinding; hind and add the following using statement.
 
 	````C#
-	using System.Data.Entity;
-	using System.Data.Entity.Infrastructure;
-	using WebFormsLab.Model; 
 	using System.Web.ModelBinding;
 	````
 
@@ -360,6 +363,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 	(Code Snippet - _Web Forms Lab - Ex01 - GetCategories 2_)
 
+	<!-- mark:1,6-9 -->
 	````C#
 	public IQueryable<Category> GetCategories([Control]int? minProductsCount)
 	{
@@ -396,8 +400,9 @@ In this task, you will add a second, child GridView to show the products within 
 
 1. Open the **Products.aspx** page and update the categories GridView to auto-generate the Select button.
 
+	<!-- mark:5 -->
 	````HTML	
-<asp:GridView ID="categoriesGrid" runat="server"
+	<asp:GridView ID="categoriesGrid" runat="server"
 	  AutoGenerateColumns="false"
 	  ItemType="WebFormsLab.Model.Category" DataKeyNames="CategoryId"
 	  SelectMethod="GetCategories"
@@ -445,6 +450,7 @@ In this task, you will add a second, child GridView to show the products within 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Edit Product Link_)
 
+	<!-- mark:9-13 -->
 	````HTML
 	<h3>Products</h3>
 	<asp:GridView ID="productsGrid" runat="server" 
@@ -455,8 +461,9 @@ In this task, you will add a second, child GridView to show the products within 
 	  SelectMethod="GetProducts">
 	  <Columns>
 	    <asp:TemplateField>
-	      <ItemTemplate><a href="ProductDetails.aspx?productId=<%#: Item.ProductId %>">View</a>
-               </ItemTemplate>
+	      <ItemTemplate>
+	        <a href="ProductDetails.aspx?productId=<%#: Item.ProductId %>">View</a>
+	      </ItemTemplate>
 	    </asp:TemplateField>
 	    <asp:BoundField DataField="ProductId" HeaderText="ID" />
 	    <asp:BoundField DataField="ProductName" HeaderText="Name" />
@@ -508,10 +515,10 @@ You will update the categories GridView to let the user update categories.
 
 	(Code Snippet - _Web Forms Lab - Ex01 - Enable Categories Update_)
 
+	<!-- mark:6-7 -->
 	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	    AutoGenerateColumns="false"
-	    CellPadding="4"
 	    ItemType="WebFormsLab.Model.Category" DataKeyNames="CategoryId"
 	    SelectMethod="GetCategories"
 	    AutoGenerateSelectButton="true"
@@ -560,7 +567,7 @@ Forms with complex data including validators tend to generate too much JavaScrip
 
 In this section, you will enable unobtrusive validation in ASP.NET to compare the HTML code generated by both configurations.
 
-1. Open **Visual Studio 11** and open the **WebFormsLab-Ex2-Begin.sln** solution located in the **Source\Ex2-Validation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open **Visual Studio 2012** and open the **WebFormsLab-Ex2-Begin.sln** solution located in the **Source\Ex2-Validation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
 1. Press **F5** to start the web application. Go to the Customers page and click the **Add a New Customer** link.
 
@@ -570,26 +577,17 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
  
 	_Showing the page HTML code_
 
-1. Scroll through the page source code and notice that ASP.NET has injected JavaScript code in the page to perform the validations and show the error list.
+1. Scroll through the page source code and notice that ASP.NET has injected JavaScript code and data validators in the page to perform the validations and show the error list.
 
  	![Validation JavaScript code in CustomerDetails page ](./images/Validation-JavaScript-code-in-CustomerDetails-page-.png?raw=true "Validation JavaScript code in CustomerDetails page ")
  
 	_Validation JavaScript code in CustomerDetails page_
 
-1. Press **F12** to open the developer tools.
-
-1. Select the **Script** tab and expand the "CustomerDetails.aspx" combo to see all the referenced scripts.
-
-	Notice that there are no references to the jQuery library. The validations are performed using the Microsoft Ajax Libraries together with JavaScript code injected within the page.
-
- 	![No jQuery used for validations](./images/No-jQuery-used-for-validations.png?raw=true "No jQuery used for validations")
- 
-	_No jQuery used for validations_
-
 1. Close the browser and go back to Visual Studio.
 
 1. Now you will enable unobtrusive validation. Open **Web.Config** and locate **ValidationSettings:UnobtrusiveValidationMode** key in the **AppSettings** section**.** Set the key value to **WebForms**.
 
+	<!-- mark:5 -->
 	````XML
 	<configuration>
 	  ...
@@ -600,43 +598,6 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 	> **Note:** You can also set this property in the "**Page_Load**" event in case you want to enable Unobtrusive Validation only for some pages.
 
-1. Open the **Global.asax.cs** file and add the following using statement (shown in bold) 
-
-	(Code Snippet _- Web Forms Lab - Ex02 - Using statements_)
-
-	````C#
-	using System.Web.SessionState;
-	using WebFormsLab.Model;
-	using System.Web.ModelBinding;
-	````
-
-1. Within the **Application_Start** method of the **Global.asax.cs** file, add the following code 
-
-	(Code Snippet _- Web Forms Lab - Ex02 - ScriptResourceDefinition)_
-
-	````C#
-	ScriptResourceDefinition myScriptResDef = new ScriptResourceDefinition();
-	myScriptResDef.Path = "~/Assets/Scripts/jquery-1.7.1.min.js";
-	myScriptResDef.DebugPath = "~/Assets/Scripts/jquery-1.7.1.js";
-	myScriptResDef.CdnPath = "http://code.jquery.com/jquery-1.7.1.min.js";
-	myScriptResDef.CdnDebugPath = "http://code.jquery.com/jquery-1.7.1.js";
-	ScriptManager.ScriptResourceMapping.AddDefinition("jquery", null, myScriptResDef);
-	````
-
-1. Open **Site.Master.** Add the code below to include a **ScriptManager** on the page to include a script reference to the jQuery client library. 
-
-	(Code Snippet - _Web Forms Lab - Ex01 - Script Manager_)
-
-	````HTML
-	<form runat="server">
-	
-	<asp:ScriptManager ID="uxScriptManagerMasterPage" runat="server" EnableCdn="False">
-	     <Scripts>
-	          <asp:ScriptReference Name="jquery" />
-	     </Scripts>
-	</asp:ScriptManager>
-	````
-
 1. Open **CustomerDetails.aspx** and press **F5** to start the Web application. 
 
 1. Press the F12 key to open the IE developer tools. Once the developer tools is open, select the script tab. Select **CustomerDetails.aspx** from the menu and take note that the scripts required to run jQuery on the page have been loaded into the browser from the local site. 	
@@ -645,13 +606,13 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
  
 	_Loading the jQuery JavaScript files directly from the local IIS server_
 
-1. Close the browser to return to Visual Studio. Open the **Site.Master** file again and locate the **ScriptManager** that you just added to the page. Change the value of the **EnableCdn** property to be **True**. This will force jQuery to be loaded from the online URL, not from the local site's URL. 
+1. Close the browser to return to Visual Studio. Open the **Site.Master** file again and locate the **ScriptManager**. Add the aatribute **EnableCdn** property with the value **True**. This will force jQuery to be loaded from the online URL, not from the local site's URL. 
 
 1. Open **CustomerDetails.aspx** in Visual Studio. Press the F5 key to run the site. Once Internet Explorer opens, press the F12 key to open the developer tools. Select the **Script** tab, and then take a look at the drop-down list. Note the jQuery JavaScript files are no longer being loaded from the local site, but rather from the online jQuery CDN. 	
 
-	![Loading the jQuery JavaScript files from the jQuery CDN](./images/Loading-the-jQuery-JavaScript-files-from-the-jQuery-CDN.png?raw=true "Loading the jQuery JavaScript files from the jQuery CDN")
+	![Loading the jQuery JavaScript files from the CDN](./images/Loading-the-jQuery-JavaScript-files-from-the-jQuery-CDN.png?raw=true "Loading the jQuery JavaScript files from the CDN")
  
-	_Loading the jQuery JavaScript files from the jQuery CDN_
+	_Loading the jQuery JavaScript files from the CDN_
 
 1. Open the HTML page source code again using the View source option in the browser. Notice that by enabling the unobtrusive validation ASP.NET has replaced the injected JavaScript code with data- *attributes. 	
 
@@ -717,50 +678,32 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 1. Open **CustomerDetails.aspx** and remove all the RequiredFieldvalidators for the first and last name fields in the in EditItemTemplate and InsertItemTemplate sections of the FormView control.
 	
+	<!-- strike:5,10,17,22 -->
 	````HTML
 	<EditItemTemplate>
 	  <fieldset>
-	  <ul>
-	    <li><asp:Label runat="server" AssociatedControlID="firstName">First Name: </asp:Label></li>
-	    <li><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' />
-	
-	      <!-- Remove the following line-->
-	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" 
-                          ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
-	    </li>
-	  </ul>
-	  <ul>
-	    <li><asp:Label runat="server" AssociatedControlID="lastName">Last Name: </asp:Label></li>
-	    <li><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
-	
-	      <!-- Remove the following line-->
-	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" 
-                          ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
-	    </li>
-	  </ul>
-	  <ul>
+		 <p><asp:Label runat="server" AssociatedControlID="firstName">First Name: </asp:Label></p>
+		 <p><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' />
+			&nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
+		</p>
+
+		 <p><asp:Label runat="server" AssociatedControlID="lastName">Last Name: </asp:Label></p>
+		 <p><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
+			  &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
+		</p>
 	  ...
-	<InsertItemTemplate>
-	  <fieldset>
-	    <ul>
-	      <li><asp:Label runat="server" AssociatedControlID="firstName">First Name: </asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="firstName" Text='<%# BindItem.FirstName %>' />
-	
-	      <!-- Remove the following line-->
-	      &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" 
-                          ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
-	      </li>
-	    </ul>
-	    <ul>
-	      <li><asp:Label runat="server" AssociatedControlID="lastName">Last Name: </asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
-	
-	        <!-- Remove the following line-->
-	        &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" 
-                            ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
-	      </li>
-	  </ul>
-	  <ul>
+	<InsertItemTemplate>        
+     <fieldset>
+       <p><asp:Label runat="server" AssociatedControlID="firstName">First Name: </asp:Label></p>
+       <p><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' />			
+         &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="firstName" ErrorMessage="Please enter a value for First Name" ForeColor="Red" />
+		</p>
+
+       <p><asp:Label runat="server" AssociatedControlID="lastName">Last Name: </asp:Label></p>                
+		<p><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
+         &nbsp;<asp:RequiredFieldValidator runat="server" ControlToValidate="lastName" ErrorMessage="Please enter a value for Last Name" ForeColor="Red" />
+		</p>
+	  ...
 	````
 
 	>**Note:** One advantage of using data annotations is that validation logic is not duplicated in your application pages. You define it once in the model, and use it across all the application pages that manipulate data.
@@ -769,6 +712,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 	The ModelState.IsValid will only return true if all the fields on your model are valid after performing the validation.
 
+	<!-- mark:3 -->
 	````C#
 	public void SaveCustomer(Customer customer) 
 	{
@@ -828,6 +772,7 @@ In this task, you will add code to properly handle database exceptions and show 
 
 	(Code Snippet - _Web Forms Lab - Ex01 - UpdateCategory Handle Errors_)
 
+	<!-- mark:9-18 -->
 	````C#
 	public void UpdateCategory(int categoryId)
 	{
@@ -857,6 +802,7 @@ In this task, you will add code to properly handle database exceptions and show 
 
 	(Code Snippet - _Web Forms Lab - Ex02 - Categories ValidationSummary_)
 
+	<!-- mark:5 -->
 	````HTML
 	<asp:GridView ID="categoriesGrid" runat="server"
 	  ...
@@ -900,12 +846,13 @@ The request validation feature in ASP.NET provides a certain level of default pr
 
 	The new **ValidateRequestMode** attribute allows you to disable the request validation granularly on each control. This is useful when you want to use an input that may receive HTML code, but want to keep the validation working for the rest of the page.
 
+	<!-- mark:4 -->
 	````HTML
-	<li>
+	<p>
 	  <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" 
                 Cols="60" Rows="8" Text='<%# BindItem.Description %>' 
 	    ValidateRequestMode="Disabled" />
-	</li>
+	</p>
 	````
 
 1. Press **F5** to run the web application. Open the edit product page again and complete a product description including HTML tags. Notice that you can now add HTML content to the description.
@@ -921,17 +868,6 @@ The request validation feature in ASP.NET provides a certain level of default pr
  	![Request validation enabled in the rest of the fields](./images/Request-validation-enabled-in-the-rest-of-the-fields.png?raw=true "Request validation enabled in the rest of the fields")
  
 	_Request validation enabled in the rest of the fields_
-
-1. Now open Web.config and check the **HttpRuntime** element, notice the new 4.5 validation mode.
-
-	````XML
-	<system.web>
-	   ...
-	  <httpRuntime requestValidationMode="4.5" encoderType="System.Web.Security.AntiXss.AntiXssEncoder, 
-                        System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	 
-	</system.web>
-	````
 
 	ASP.NET Web Forms 4.5 includes a new request validation mode to perform request validation lazily. With the request validation mode set to **4.5**, if a piece of code accesses _Request.Form["key"]_, ASP.NET 4.5's request validation will only trigger request validation for that specific element in the form collection.
 
@@ -955,47 +891,35 @@ In this exercise, you will be introduced to the new asynchronous page processing
 
 In this task, you will update the product details page to allow the user to specify an image URL for the product and display it in the read-only view. You will create a local copy of the specified image by downloading it synchronously. In the next task, you will update this implementation to make it work asynchronously.
 
-1. Open **Visual Studio 11** and load the **WebFormsLab-Ex3-Begin.sln** solution located in **Source\Ex3-Async\Begin** from this lab's folder. Alternatively, you can continue working on your existing solution from the previous exercises.
+1. Open **Visual Studio 2012** and load the **WebFormsLab-Ex3-Begin.sln** solution located in **Source\Ex3-Async\Begin** from this lab's folder. Alternatively, you can continue working on your existing solution from the previous exercises.
 
 1. Open the **ProductDetails.aspx** page source and add a field in the FormView's ItemTemplate to show the product image.
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Show Product Image_)
 
+	<!-- mark:10-14 -->
 	````HTML
 	<ItemTemplate>
-	  <fieldset>
-	    <ul>
-	      <li><b><asp:Label ID="Label2" runat="server" AssociatedControlID="itemProductName">
-                           Name:
-                      </asp:Label>
-                   </b>
-               </li>
-	      <li><asp:Label runat="server" ID="itemProductName" Text='<%# Item.ProductName %>' /></li>
-	      <li><b><asp:Label ID="Label3" runat="server" AssociatedControlID="itemDescription">
-                           Description (HTML):
-                      </asp:Label></b></li>
-	      <li><asp:Label runat="server" ID="itemDescription" Text='<%# Item.Description %>' /></li>
-	      <li><b><asp:Label ID="Label4" runat="server" AssociatedControlID="itemUnitPrice">
-                           Price:
-                      </asp:Label></b></li>
-	      <li><asp:Label runat="server" ID="itemUnitPrice" Text='<%# Item.UnitPrice %>' /></li>
-	
-	      <li><b><asp:Label ID="Label5" runat="server" AssociatedControlID="itemUnitPrice">
-                           Image:
-                      </asp:Label></b></li>
-	      <li>
-                   <img src="<%# string.IsNullOrEmpty(Item.ImagePath) ? "/Images/noimage.jpg" : 
-                   Item.ImagePath %>" alt="Image" />
-               </li>
-	    </ul>
-	    <br />
-	    <ul>
-	      <li>
-	        <asp:Button ID="Button1" runat="server" CommandName="Edit" Text="Edit" />&nbsp;
-	        <asp:HyperLink NavigateUrl="~/Products.aspx" Text="Back" runat="server" />
-	      </li>
-	    </ul>
-	  </fieldset>
+		 <fieldset>
+			  <p><b><asp:Label ID="Label2" runat="server" AssociatedControlID="itemProductName">Name:</asp:Label></b></p>
+			  <p><asp:Label runat="server" ID="itemProductName" Text='<%#: Item.ProductName %>' /></p>
+			  <p><b><asp:Label ID="Label3" runat="server" AssociatedControlID="itemDescription">Description (HTML):</asp:Label></b></p>
+			  <p><asp:Label runat="server" ID="itemDescription" Text='<%# Item.Description %>' /></p>
+			  <p><b><asp:Label ID="Label4" runat="server" AssociatedControlID="itemUnitPrice">Price:</asp:Label></b></p>
+			  <p><asp:Label runat="server" ID="itemUnitPrice" Text='<%#: Item.UnitPrice %>' /></p>
+
+			  <p><b><asp:Label ID="Label5" runat="server" AssociatedControlID="itemUnitPrice">Image:</asp:Label></b></p>
+			  <p>
+					<img src="<%# string.IsNullOrEmpty(Item.ImagePath) ? "/Images/noimage.jpg" : 
+					Item.ImagePath %>" alt="Image" />
+			  </p>
+
+			  <br />
+			  <p>
+					<asp:Button ID="Button1" runat="server" CommandName="Edit" Text="Edit" />&nbsp;
+					<asp:HyperLink NavigateUrl="~/Products.aspx" Text="Back" runat="server" />
+			  </p>
+		 </fieldset>
 	</ItemTemplate>
 	````
 
@@ -1003,39 +927,41 @@ In this task, you will update the product details page to allow the user to spec
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Edit Image URL_)
 
+	<!-- mark:12-13 -->
 	````HTML
-	<EditItemTemplate>
-	  <fieldset>
-	    <ul>
-	      <li><asp:Label ID="Label2" runat="server" AssociatedControlID="ProductName">
-                        Name:</asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="ProductName" Text='<%# BindItem.ProductName %>' /></li>
-	      <li><asp:Label ID="Label3" runat="server" AssociatedControlID="Description">
-                        Description (HTML):</asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="Description" TextMode="MultiLine" 
-                         Cols="60" Rows="8" Text='<%# BindItem.Description %>' 
-                         ValidateRequestMode="Disabled" />
-	      </li>
-	      <li><asp:Label ID="Label4" runat="server" AssociatedControlID="UnitPrice">
-                        Price:</asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="UnitPrice" Text='<%# BindItem.UnitPrice %>' /></li>
-	
-	      <li><asp:Label ID="Label1" runat="server" AssociatedControlID="ImagePath">
-                        Image URL:</asp:Label></li>
-	      <li><asp:TextBox runat="server" ID="ImagePath" Text='<%#:  BindItem.ImagePath %>' /></li>
-	    </ul>
-	    <br />
-	    <ul>
-	      <li>
-	        <asp:Button runat="server" CommandName="Update" Text="Save" />
-	        <asp:Button runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false" />
-	      </li>
-	    </ul>
-	  </fieldset>
-	</EditItemTemplate>
+	<fieldset>
+		 <p><asp:Label ID="Label2" runat="server" AssociatedControlID="ProductName">Name:</asp:Label></p>
+		 <p><asp:TextBox runat="server" ID="ProductName" Text='<%#: BindItem.ProductName %>' /></p>
+		 <p><asp:Label ID="Label3" runat="server" AssociatedControlID="Description">Description (HTML):</asp:Label></p>
+		 <p>
+			  <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" Cols="60" Rows="8" Text='<%# BindItem.Description %>'
+					ValidateRequestMode="Disabled" />
+		 </p>
+		 <p><asp:Label ID="Label4" runat="server" AssociatedControlID="UnitPrice">Price:</asp:Label></p>
+		 <p><asp:TextBox runat="server" ID="UnitPrice" Text='<%#: BindItem.UnitPrice %>' /></p>
+						 
+		 <p><asp:Label ID="Label1" runat="server" AssociatedControlID="ImagePath">Image URL:</asp:Label></p>
+		 <p><asp:TextBox runat="server" ID="ImagePath" Text='<%#:  BindItem.ImagePath %>' /></p>
+
+		 <br />
+		 <p>
+			  <asp:Button runat="server" CommandName="Update" Text="Save" />
+			  <asp:Button runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false" />
+		 </p>
+	</fieldset>
 	````
 
-1. Open the **ProductDetails.aspx.cs** code-behind file and create an **UpdateProductImage** method to store remote images in the local **Images** folder and update the product entity with the new image location value.
+1. Open the **ProductDetails.aspx.cs** code-behind file and add the following namespace directives.
+
+	(Code Snippet - _Web Forms Lab - Ex03 - Namespaces_)
+
+	````C#
+	using System.Net;
+	using System.IO;
+	using System.Web;
+	````
+
+1. Create an **UpdateProductImage** method to store remote images in the local **Images** folder and update the product entity with the new image location value.
 
 	(Code Snippet - _Web Forms Lab - Ex03 - UpdateProductImage_)
 
@@ -1062,6 +988,7 @@ In this task, you will update the product details page to allow the user to spec
 
 	(Code Snippet - _Web Forms Lab - Ex03 - UpdateProductImage Call_)
 
+	<!-- mark:7 -->
 	````C#
 	public void UpdateProduct(int productId)
 	{
@@ -1076,15 +1003,6 @@ In this task, you will update the product details page to allow the user to spec
 	        this.db.SaveChanges();
 	    }
 	}
-	````
-
-1. Add the following namespace directives.
-
-	(Code Snippet - _Web Forms Lab - Ex03 - Namespaces_)
-
-	````C#
-	using System.Net;
-	using System.IO;
 	````
 
 1. Run the application and try to upload an image for a product. For example, you can use the following image URL from Office Clip Arts: [http://officeimg.vo.msecnd.net/en-us/images/MB900437099.jpg](http://officeimg.vo.msecnd.net/en-us/images/MB900437099.jpg)
@@ -1103,6 +1021,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 1. Open the **ProductDetails.aspx** page. Add the **Async** attribute in the **Page** element and set it to **true**. This attribute tells ASP.NET to implement the IHttpAsyncHandler interface.
 
+	<!-- mark:3 -->
 	````HTML
 	<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
 	    CodeBehind="ProductDetails.aspx.cs" Inherits="WebFormsLab.ProductDetails"
@@ -1113,6 +1032,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Threads Message Label_)
 
+	<!-- mark:4 -->
 	````HTML
 	    <EmptyDataTemplate>Product not found</EmptyDataTemplate>
 	  </asp:FormView>
@@ -1121,11 +1041,12 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	</asp:Content>
 	````
 
-1. Open up **ProductDetails.aspx.cs** and add the following namespace directive.
+1. Open up **ProductDetails.aspx.cs** and add the following namespace directives.
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Namespaces 2_)
 
 	````C#
+	using System.Web.UI;
 	using System.Threading;
 	````
 
@@ -1133,6 +1054,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - UpdateProductImage Async_)
 
+	<!-- mark:11-17 -->
 	````C#
 	private void UpdateProductImage(Product product)
 	{
@@ -1161,6 +1083,7 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Show threads_)
 
+	<!-- mark:13,21-25 -->
 	````C#
 	private void UpdateProductImage(Product product)
 	{
@@ -1205,7 +1128,210 @@ Time-consuming operations on your web site are great candidates for asynchronous
 	_Downloading an image asynchronously_
 
 
-## Appendix: Using Code Snippets ##
+## Summary ##
+
+In this hands-on lab, the following concepts have been addressed and demonstrated:
+
+- Use strongly-typed data-binding expressions
+
+- Use new model binding features in Web Forms
+
+- Use value providers for mapping page data to code-behind methods
+
+- Use Data Annotations for user input validation
+
+- Take advange of unobstrusive client-side validation with jQuery in Web Forms
+
+- Implement granular request validation
+
+- Implement asynchronous page processing in Web Forms
+
+<a name="AppendixA" />
+## Appendix A: Installing Visual Studio Express 2012 for Web ##
+
+You can install **Microsoft Visual Studio Express 2012 for Web** or another "Express" version using the **[Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx)**. The following instructions guide you through the steps required to install _Visual studio Express 2012 for Web_ using _Microsoft Web Platform Installer_.
+
+1. Go to [http://go.microsoft.com/?linkid=9810169](http://go.microsoft.com/?linkid=9810169). Alternatively, if you already have installed Web Platform Installer, you can open it and search for the product "_Visual Studio Express 2012 for Web with Windows Azure SDK_".
+
+1. Click on **Install Now**. If you do not have **Web Platform Installer** you will be redirected to download and install it first.
+
+1. Once **Web Platform Installer** is open, click **Install** to start the setup.
+
+	![Install Visual Studio Express](images/install-visual-studio-express.png?raw=true "Install Visual Studio Express")
+
+ 	_Install Visual Studio Express_
+
+1. Read all the products' licenses and terms and click **I Accept** to continue.
+
+	![Accepting the license terms](images/accepting-the-license-terms.png?raw=true)
+
+	_Accepting the license terms_
+
+1. Wait until the downloading and installation process completes.
+
+	![Installation progress](images/installation-progress.png?raw=true)
+
+	_Installation progress_
+
+1. When the installation completes, click **Finish**.
+
+	![Installation completed](images/installation-completed.png?raw=true)
+
+	_Installation completed_
+
+1. Click **Exit** to close Web Platform Installer.
+
+1. To open Visual Studio Express for Web, go to the **Start** screen and start writing "**VS Express**", then click on the **VS Express for Web** tile.
+
+	![VS Express for Web tile](images/vs-express-for-web-tile.png?raw=true)
+
+	_VS Express for Web tile_
+
+<a name="AppendixB" />
+## Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy ##
+
+This appendix will show you how to create a new web site from the Windows Azure Management Portal and publish the application you obtained by following the lab, taking advantage of the Web Deploy publishing feature provided by Windows Azure.
+
+<a name="ApxBTask1"></a>
+#### Task 1 – Creating a New Web Site from the Windows Azure Portal ####
+
+1. Go to the [Windows Azure Management Portal](https://manage.windowsazure.com/) and sign in using the Microsoft credentials associated with your subscription.
+
+	![Log on to Windows Azure portal](images/login.png?raw=true "Log on to Windows Azure portal")
+
+	_Log on to Windows Azure Management Portal_
+
+1. Click **New** on the command bar.
+
+	![Creating a new Web Site](images/new-website.png?raw=true "Creating a new Web Site")
+
+	_Creating a new Web Site_
+
+1. Click **Compute** | **Web Site**. Then select **Quick Create** option. Provide an available URL for the new web site and click **Create Web Site**.
+
+	> **Note:** A Windows Azure Web Site is the host for a web application running in the cloud that you can control and manage. The Quick Create option allows you to deploy a completed web application to the Windows Azure Web Site from outside the portal. It does not include steps for setting up a database.
+
+	![Creating a new Web Site using Quick Create](images/quick-create.png?raw=true "Creating a new Web Site using Quick Create")
+
+	_Creating a new Web Site using Quick Create_
+
+1. Wait until the new **Web Site** is created.
+
+1. Once the Web Site is created click the link under the **URL** column. Check that the new Web Site is working.
+
+	![Browsing to the new web site](images/navigate-website.png?raw=true "Browsing to the new web site")
+
+	_Browsing to the new web site_
+
+	![Web site running](images/website-working.png?raw=true "Web site running")
+
+	_Web site running_
+
+1. Go back to the portal and click the name of the web site under the **Name** column to display the management pages.
+
+	![Opening the web site management pages](images/go-to-the-dashboard.png?raw=true "Opening the web site management pages")
+	
+	_Opening the Web Site management pages_
+
+1. In the **Dashboard** page, under the **quick glance** section, click the **Download publish profile** link.
+
+	> **Note:** The _publish profile_ contains all of the information required to publish a web application to a Windows Azure website for each enabled publication method. The publish profile contains the URLs, user credentials and database strings required to connect to and authenticate against each of the endpoints for which a publication method is enabled. **Microsoft WebMatrix 2**, **Microsoft Visual Studio Express for Web** and **Microsoft Visual Studio 2012** support reading publish profiles to automate configuration of these programs for publishing web applications to Windows Azure websites. 
+
+	![Downloading the web site publish profile](images/download-publish-profile.png?raw=true "Downloading the web site publish profile")
+	
+	_Downloading the Web Site publish profile_
+
+1. Download the publish profile file to a known location. Further in this exercise you will see how to use this file to publish a web application to a Windows Azure Web Sites from Visual Studio.
+
+	![Saving the publish profile file](images/save-link.png?raw=true "Saving the publish profile")
+	
+	_Saving the publish profile file_
+
+<a name="ApxBTask2"></a>
+#### Task 2 – Configuring the Database Server ####
+
+If your application makes use of SQL Server databases you will need to create a SQL Database server. If you want to deploy a simple application that does not use SQL Server you might skip this task.
+
+1. You will need a SQL Database server for storing the application database. You can view the SQL Database servers from your subscription in the Windows Azure Management portal at **Sql Databases** | **Servers** | **Server's Dashboard**. If you do not have a server created, you can create one using the **Add** button on the command bar. Take note of the **server name and URL, administrator login name and password**, as you will use them in the next tasks. Do not create the database yet, as it will be created in a later stage.
+
+	![SQL Database Server Dashboard](images/sql-database-server-dashboard.png?raw=true "SQL Database Server Dashboard")
+
+	_SQL Database Server Dashboard_
+
+1. In the next task you will test the database connection from Visual Studio, for that reason you need to include your local IP address in the server's list of **Allowed IP Addresses**. To do that, click **Configure**, select the IP address from **Current Client IP Address** and paste it on the **Start IP Address** and **End IP Address** text boxes and click the ![add-client-ip-address-ok-button](images/add-client-ip-address-ok-button.png?raw=true) button.
+
+	![Adding Client IP Address](images/add-client-ip-address.png?raw=true)
+
+	_Adding Client IP Address_
+
+1. Once the **Client IP Address** is added to the allowed IP addresses list, click on **Save** to confirm the changes.
+
+	![Confirm Changes](images/add-client-ip-address-confirm.png?raw=true)
+
+	_Confirm Changes_
+
+<a name="ApxBTask3"></a>
+#### Task 3 – Publishing an ASP.NET MVC 4 Application using Web Deploy ####
+
+1. Go back to the ASP.NET MVC 4 solution. In the **Solution Explorer**,  right-click the web site project and select **Publish**.
+
+	![Publishing the Application](images/publishing-the-application.png?raw=true "Publishing the Application")
+
+	_Publishing the web site_
+
+1. Import the publish profile you saved in the first task.
+
+	![Importing the publish profile](images/importing-the-publish-profile.png?raw=true "Importing the publish profile")
+
+	_Importing publish profile_
+
+1. Click **Validate Connection**. Once Validation is complete click **Next**.
+
+	> **Note:** Validation is complete once you see a green checkmark appear next to the Validate Connection button.
+
+	![Validating connection](images/validating-connection.png?raw=true "Validating connection")
+
+	_Validating connection_
+
+1. In the **Settings** page, under the **Databases** section, click the button next to your database connection's textbox (i.e. **DefaultConnection**).
+
+	![Web deploy configuration](images/web-deploy-configuration.png?raw=true "Web deploy configuration")
+
+	_Web deploy configuration_
+
+1. Configure the database connection as follows:
+	* In the **Server name** type your SQL Database server URL using the _tcp:_ prefix.
+	* In **User name** type your server administrator login name.
+	* In **Password** type your server administrator login password.
+	* Type a new database name, for example: _MVC4SampleDB_.
+
+	![Configuring destination connection string](images/configuring-destination-connection-string.png?raw=true "Configuring destination connection string")
+
+	_Configuring destination connection string_
+
+1. Then click **OK**. When prompted to create the database click **Yes**.
+
+	![Creating the database](images/creating-the-database.png?raw=true "Creating the database string")
+
+	_Creating the database_
+
+1. The connection string you will use to connect to SQL Database in Windows Azure is shown within Default Connection textbox. Then click **Next**.
+
+	![Connection string pointing to SQL Database](images/sql-database-connection-string.png?raw=true "Connection string pointing to SQL Database")
+
+	_Connection string pointing to SQL Database_
+
+1. In the **Preview** page, click **Publish**.
+
+	![Publishing the web application](images/publishing-the-web-application.png?raw=true "Publishing the web application")
+
+	_Publishing the web application_
+
+1. Once the publishing process finishes, your default browser will open the published web site.
+
+
+<a name="AppendixC"></a>
+## Appendix C: Using Code Snippets ##
 
 With code snippets, you have all the code you need at your fingertips. The lab document will tell you exactly when you can use them, as shown in the following figure.
 
@@ -1214,6 +1340,7 @@ With code snippets, you have all the code you need at your fingertips. The lab d
 _Using Visual Studio code snippets to insert code into your project_
 
 _**To add a code snippet using the keyboard (C# only)**_
+
 1. Place the cursor where you would like to insert the code.
 
 1. Start typing the snippet name (without spaces or hyphens).
@@ -1252,21 +1379,3 @@ _Right-click where you want to insert the code snippet and select Insert Snippet
  ![Pick the relevant snippet from the list, by clicking on it](./images/Pick-the-relevant-snippet-from-the-list,-by-clicking-on-it.png?raw=true "Pick the relevant snippet from the list, by clicking on it")
  
 _Pick the relevant snippet from the list, by clicking on it_
-
-## Summary ##
-
-In this hands-on lab, the following concepts have been addressed and demonstrated:
-
-- Use strongly-typed data-binding expressions
-
-- Use new model binding features in Web Forms
-
-- Use value providers for mapping page data to code-behind methods
-
-- Use Data Annotations for user input validation
-
-- Take advange of unobstrusive client-side validation with jQuery in Web Forms
-
-- Implement granular request validation
-
-- Implement asynchronous page processing in Web Forms

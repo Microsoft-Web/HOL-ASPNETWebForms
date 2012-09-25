@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using WebFormsLab.Model;
-using System.Web.ModelBinding;
-
-namespace WebFormsLab
+﻿namespace WebFormsLab
 {
+    using System;
+    using System.Web.ModelBinding;
+    using WebFormsLab.Model;
+
     public partial class ProductDetails : System.Web.UI.Page
     {
         private ProductsContext db = new ProductsContext();
@@ -20,9 +13,9 @@ namespace WebFormsLab
             return this.db.Products.Find(productId);
         }
 
-        public void UpdateProduct(int productId)
+        public void UpdateProduct(int productID)
         {
-            var product = this.db.Products.Find(productId);
+            var product = this.db.Products.Find(productID);
 
             TryUpdateModel(product);
 

@@ -14,15 +14,15 @@ namespace WebFormsLab.Model
         [Required]
         public string LastName { get; set; }
 
-        [Range(0, 130)]        
+        [Range(0, 130)]
         public int Age { get; set; }
 
         public Address Address { get; set; }
 
-        [Phone]        
+        [Phone]
         public string DaytimePhone { get; set; }
-                 
-        [EmailAddress, StringLength(256)]        
+
+        [EmailAddress, StringLength(256)]
         public string EmailAddress { get; set; }
     }
 }

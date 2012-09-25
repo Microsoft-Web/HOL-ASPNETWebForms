@@ -1,25 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using WebFormsLab.Model;
-using System.Web.ModelBinding;
-
-namespace WebFormsLab
+﻿namespace WebFormsLab
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Web.ModelBinding;
+    using WebFormsLab.Model;
+
     public partial class Products : System.Web.UI.Page
     {
         private ProductsContext db = new ProductsContext();
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
+
         public IQueryable<Category> GetCategories([Control]int? minProductsCount)
         {
             var query = this.db.Categories
-                .Include(c => c.Products);
+              .Include(c => c.Products);
 
             if (minProductsCount.HasValue)
             {
@@ -48,13 +48,11 @@ namespace WebFormsLab
                 }
                 catch (DbUpdateException)
                 {
-                    ModelState.AddModelError("CategoryName", string.Format("A category with the name {0} already exists.", category.CategoryName));
+                    ModelState.AddModelError("CategoryName",
+                         string.Format("A category with the name {0} already exists.",
+                         category.CategoryName));
                 }
             }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
         }
     }
 }

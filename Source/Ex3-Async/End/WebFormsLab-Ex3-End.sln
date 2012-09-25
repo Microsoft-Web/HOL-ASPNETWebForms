@@ -1,27 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 11
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsLab", "WebFormsLab\WebFormsLab.csproj", "{D4BD6A19-40DC-49DB-A8B7-FCD94D7870CC}"
+# Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormsLab", "WebFormsLab\WebFormsLab.csproj", "{794651FA-4402-440C-BF99-CA3DA0E6C910}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C3AAC7A6-93E8-4325-B5E9-314085219095}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccLocalPath0 = .
-		SccLocalPath1 = WebFormsLab
-		SccNumberOfProjects = 2
-		SccProjectName1 = WebFormsLab
-		SccProjectUniqueName1 = WebFormsLab\\WebFormsLab.csproj
-		SccTeamFoundationServer = https://vstf-us-wa-05.partners.extranet.microsoft.com:8443/tfs/ext05
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D4BD6A19-40DC-49DB-A8B7-FCD94D7870CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4BD6A19-40DC-49DB-A8B7-FCD94D7870CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4BD6A19-40DC-49DB-A8B7-FCD94D7870CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4BD6A19-40DC-49DB-A8B7-FCD94D7870CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{794651FA-4402-440C-BF99-CA3DA0E6C910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794651FA-4402-440C-BF99-CA3DA0E6C910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794651FA-4402-440C-BF99-CA3DA0E6C910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794651FA-4402-440C-BF99-CA3DA0E6C910}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
