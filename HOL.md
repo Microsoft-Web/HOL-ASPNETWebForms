@@ -33,7 +33,7 @@ In this hands-on lab, you will learn how to:
  
 ### Prerequisites ###
 
-- [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix B](#AppendixB) for instructions on how to install it).
+- [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix A](#AppendixAS) for instructions on how to install it).
 
 - [Windows PowerShell](http://support.microsoft.com/kb/968930/) (for setup scripts - already installed on Windows 7 and Windows Server 2008 R2)
 
@@ -1305,7 +1305,7 @@ If your application makes use of SQL Server databases you will need to create a 
 	* In the **Server name** type your SQL Database server URL using the _tcp:_ prefix.
 	* In **User name** type your server administrator login name.
 	* In **Password** type your server administrator login password.
-	* Type a new database name, for example: _MVC4SampleDB_.
+	* Type a new database name.
 
 	![Configuring destination connection string](images/configuring-destination-connection-string.png?raw=true "Configuring destination connection string")
 
