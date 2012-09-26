@@ -126,7 +126,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 1. Close the browser and go back to Visual Studio.
 
-1. Open the **Customers.aspx** page and use the new **ItemType** attribute in the repeater to set the **Customer** type as the binding type.
+1. Now replace the implementation to use strongly typed bindings. Open the **Customers.aspx** page and use the new **ItemType** attribute in the repeater to set the **Customer** type as the binding type.
 
 	<!-- mark:4 -->
 	````HTML
@@ -168,6 +168,8 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 	  <a href="CustomerDetails.aspx">Add a New Customer</a>
 	</asp:Content>
 	````
+
+	One downside with the above approaches is that the calls to Eval() and Bind() are late-bound - meaning you pass strings to represent the property names. This means you don't get Intellisense for the member names, support for code navigation (like Go To Definition), nor compile-time checking support.
 
 	Setting the ItemType property causes two new typed variables to be generated in the scope of the data-binding expressions: **Item** and **BindItem**. You can use these strongly typed variables in the data-binding expressions and get the full benefits of the Visual Studio development experience.
 
