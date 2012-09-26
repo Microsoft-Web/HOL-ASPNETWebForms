@@ -10,7 +10,22 @@ With the data-bound controls, you can now also specify your own custom methods f
 
 Validating user input should also be easier with the latest version of Web Forms. You can now annotate your model classes with validation attributes from the **System.ComponentModel.DataAnnotations** namespace and request that all your site controls validate user input using that information. Client-side validation in Web Forms is now integrated with jQuery, providing cleaner client-side code and unobtrusive JavaScript features.
 
-Lastly, in the request validation area, improvements have been made to make it easier to selectively turn off request validation for specific parts of your applications or read invalidated request data.
+In the request validation area, improvements have been made to make it easier to selectively turn off request validation for specific parts of your applications or read invalidated request data.
+
+Some improvements have been made to Web Forms server controls to take advantage of new features of HTML5:
+
+- The TextMode property of the TextBox control has been updated to support the new HTML5 input types like email, datetime, and so on.
+
+- The FileUpload control now supports multiple file uploads from browsers that support this HTML5 feature.
+
+- Validator controls now support validating HTML5 input elements.
+
+- New HTML5 elements that have attributes that represent a URL now support runat="server". As a result, you can use ASP.NET conventions in URL paths, like the ~ operator to represent the application root (for example, <video runat="server" src="~/myVideo.wmv" />).
+
+- The UpdatePanel control has been fixed to support posting HTML5 input fields.
+
+In the official ASP.NET portal you can find more examples of the new features in ASP.NET WebForms 4.5: [What's New in ASP.NET 4.5 and Visual Studio 2012](http://www.asp.net/vnext/overview/whitepapers/whats-new#_Toc318097385)
+
 
 ### Objectives ###
 
