@@ -82,7 +82,7 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 1. Open **Visual Studio 2012** and open the **WebFormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-ModelBinding\Begin** folder of this lab.
 
-1. Click **Project** and select **Manage NuGet Packages**.
+1. In the Solution Explorer, click the **WebFormsLab** project and select **Manage NuGet Packages**.
 
 1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -592,7 +592,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 1. Open **Visual Studio 2012** and open the **WebFormsLab-Ex2-Begin.sln** solution located in the **Source\Ex2-Validation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click **Project** and select **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -922,7 +922,7 @@ In this task, you will update the product details page to allow the user to spec
 
 1. Open **Visual Studio 2012** and load the **WebFormsLab-Ex3-Begin.sln** solution located in **Source\Ex3-Async\Begin** from this lab's folder. Alternatively, you can continue working on your existing solution from the previous exercises.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click **Project** and select **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
