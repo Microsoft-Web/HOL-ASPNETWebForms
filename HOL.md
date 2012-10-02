@@ -50,8 +50,6 @@ In this hands-on lab, you will learn how to:
 
 - [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix A](#AppendixA) for instructions on how to install it).
 
-- [Windows PowerShell](http://support.microsoft.com/kb/968930/) (for setup scripts - already installed on Windows 7 and Windows Server 2008 R2)
-
  
 ### Installing Code Snippets ###
 
@@ -61,17 +59,17 @@ For convenience, much of the code you will be managing along this lab is availab
 
 This hands-on lab includes the following exercises:
 
-1. Exercise 1: Model Binding in ASP.NET Web Forms
+1. [Exercise 1: Model Binding in ASP.NET Web Forms](#Exercise1)
 
-1. Exercise 2: Data Validation
+1. [Exercise 2: Data Validation](#Exercise2)
 
-1. Exercise 3: Asynchronous Page Processing in ASP.NET Web Forms
+1. [Exercise 3: Asynchronous Page Processing in ASP.NET Web Forms](#Exercise3)
 
 > **Note:** Each exercise is accompanied by a starting solution-located in the **Begin** folder of the exercise-that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and that they will not necessarily work until you complete the exercise.
 
 > Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work throughout this hands-on lab.
 
- 
+<a name="Exercise1" />
 ### Exercise 1: Model Binding in ASP.NET Web Forms ###
 
 The new version of ASP.NET Web Forms introduces a number of enhancements focused on improving the experience when working with data. Throughout this exercise, you will learn about strongly typed data-controls and model binding.
@@ -95,8 +93,6 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 	At runtime, these calls to Eval will use reflection against the currently bound object to read the value of the member with the given name, and display the result in the HTML. This approach makes it very easy to data-bind against arbitrary, unshaped data.
 
 	Unfortunately, you lose many of the great development-time experience features in Visual Studio, including IntelliSense for member names, support for navigation (like Go To Definition), and compile-time checking.
-
-	(Code Snippet - _Web Forms Lab - Ex01 - Customers Repeater_)
 
 	<!-- mark:4-13 -->
 	````HTML
@@ -169,8 +165,6 @@ In this task, you will discover the new strongly-typed bindings available in ASP
 
 1. Replace the ItemTemplate content with the following code.
 
-	(Code Snippet - _Web Forms Lab - Ex01 - Costumer List Item_)
-
 	<!-- mark:7-9 -->
 	````HTML
 	<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -222,7 +216,7 @@ To learn about this, you will use a GridView to list the product categories usin
 
 1. Open the **Products.aspx** page and include a **GridView**. Configure the GridView as shown below to use strongly-typed bindings and enable sorting and paging.
 
-	(Code Snippet - _Web Forms Lab - Ex01 - Categories GridView_)
+
 	<!-- mark:2-13 -->
 	````HTML
 	<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
@@ -336,8 +330,6 @@ In this task, you will update the GridView to filter its results by the amount o
 
 1. At the top of the GridView, add a **Label** and a **ComboBox** to select the number of products for each category as shown below.
 
-	(Code Snippet - _Web Forms Lab - Ex01 - Categories DropDownList_)
-
 	````HTML
 	<h3>Categories</h3>
 	<asp:Label ID="Label1" runat="server" AssociatedControlID="minProductsCount">
@@ -353,8 +345,6 @@ In this task, you will update the GridView to filter its results by the amount o
 	````
 
 1. Add an **EmptyDataTemplate** to the GridView to show a message when there are no categories with the selected number of products.
-
-	(Code Snippet - _Web Forms Lab - Ex01 - No Categories Message_)
 
 	<!-- mark:13-15 -->
 	````HTML
@@ -386,7 +376,7 @@ In this task, you will update the GridView to filter its results by the amount o
 
 	(Code Snippet - _Web Forms Lab - Ex01 - GetCategories 2_)
 
-	<!-- mark:1,6-9 -->
+	<!-- mark:1-12 -->
 	````C#
 	public IQueryable<Category> GetCategories([Control]int? minProductsCount)
 	{
@@ -434,8 +424,6 @@ In this task, you will add a second, child GridView to show the products within 
 
 2. Add a second **GridView** named **productsGrid** at the bottom. Set the **ItemType** to **WebFormsLab.Model.Product**, the **DataKeyNames** to **ProductId** and the **SelectMethod** to **GetProducts**. Set **AutoGenerateColumns** to **false** and add the columns for ProductId, ProductName, Description and UnitPrice.
 
-	(Code Snippet - _Web Forms Lab - Ex01 - Products GridView_)
-
 	````HTML
 	<h3>Products</h3>
 	<asp:GridView ID="productsGrid" runat="server" 
@@ -471,8 +459,6 @@ In this task, you will add a second, child GridView to show the products within 
 
 1. Open the **Products.aspx** page and locate the products GridView. Update the products GridView to show a link for editing the selected product.
 
-	(Code Snippet - _Web Forms Lab - Ex01 - Edit Product Link_)
-
 	<!-- mark:9-13 -->
 	````HTML
 	<h3>Products</h3>
@@ -499,9 +485,7 @@ In this task, you will add a second, child GridView to show the products within 
 	</asp:GridView>
 	````
 
-1. Open the **ProductDetails.aspx** page code-behind and add the **SelectProduct** method as shown below.
-
-	Notice that the **[QueryString]** attribute is used to fill the method parameter from a productId parameter in the query string.
+1. Open the **ProductDetails.aspx** page code-behind and replace the **SelectProduct** method with the following code.
 
 	(Code Snippet - _Web Forms Lab - Ex01 - SelectProduct Method_)
 
@@ -511,6 +495,8 @@ In this task, you will add a second, child GridView to show the products within 
 	  return this.db.Products.Find(productId);
 	}
 	````
+
+	> **Note:** Notice that the **[QueryString]** attribute is used to fill the method parameter from a productId parameter in the query string.
 
 1. Press **F5** to start debugging the site and go to the Products page. Select any category from the categories GridView and notice that the products GridView is updated.
 
@@ -535,8 +521,6 @@ In the previous task, you have used model binding mainly for selecting data, in 
 You will update the categories GridView to let the user update categories.
 
 1. Open the **Products.aspx** page and update the categories GridView to auto-generate the Edit button and use the new **UpdateMethod** attribute to specify an **UpdateCategory** method to update the selected item.
-
-	(Code Snippet - _Web Forms Lab - Ex01 - Enable Categories Update_)
 
 	<!-- mark:6-7 -->
 	````HTML
@@ -580,6 +564,8 @@ You will update the categories GridView to let the user update categories.
  
  	_Editing categories_
  
+
+<a name="Exercise2" />
 ### Exercise 2: Data Validation ###
 
 In this exercise, you will learn about the new data validation features in ASP.NET 4.5. You will check out the new unobtrusive validation features in Web Forms. You will use data annotations in the application model classes for user input validation, and finally, you will learn how to turn on or off request validation to individual controls in a page.
@@ -635,7 +621,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
  
 	_Loading the jQuery JavaScript files directly from the local IIS server_
 
-1. Close the browser to return to Visual Studio. Open the **Site.Master** file again and locate the **ScriptManager**. Add the aatribute **EnableCdn** property with the value **True**. This will force jQuery to be loaded from the online URL, not from the local site's URL. 
+1. Close the browser to return to Visual Studio. Open the **Site.Master** file again and locate the **ScriptManager**. Add the atribute **EnableCdn** property with the value **True**. This will force jQuery to be loaded from the online URL, not from the local site's URL. 
 
 1. Open **CustomerDetails.aspx** in Visual Studio. Press the F5 key to run the site. Once Internet Explorer opens, press the F12 key to open the developer tools. Select the **Script** tab, and then take a look at the drop-down list. Note the jQuery JavaScript files are no longer being loaded from the local site, but rather from the online jQuery CDN. 	
 
@@ -656,39 +642,40 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of having a validation control on each input, you can now define constraints in your model classes and use them across all your web application. In this section, you will learn how to use data annotations for validating a new/edit customer form.
 
-1. Open **CustomerDetail.aspx** page**.** Notice that the customer first name and second name in the EditItemTemplate and InsertItemTemplate sections are validated using a RequiredFieldValidator controls. Each validator is associated to a particular condition, so you need to include as many validators as conditions to check.
+1. Open **CustomerDetail.aspx** page. Notice that the customer first name and second name in the **EditItemTemplate** and **InsertItemTemplate** sections are validated using a RequiredFieldValidator controls. Each validator is associated to a particular condition, so you need to include as many validators as conditions to check.
 
 1. Add data annotations to validate the Customer model class. Open **Customer.cs** class in the **Model** folder and _decorate_ each property using data annotation attributes.
 
-	(Code Snippet -_Web Forms Lab - Ex02 - Data Annotations_)
+	(Code Snippet - _Web Forms Lab - Ex02 - Data Annotations_)
 
+	<!-- mark:1-28 -->
 	````C#
 	namespace WebFormsLab.Model
 	{
 	  using System.Collections.Generic;
 	  using System.ComponentModel.DataAnnotations;
-	
+
 	  public class Customer
 	  {
-	    [Key]
-	    public int Id { get; set; }
-	
-	    [Required]
-	    public string FirstName { get; set; }
-	
-	    [Required]
-	    public string LastName { get; set; }
-	
-	    [Range(0, 130)]
-	    public int Age { get; set; }
-	
-	    public Address Address { get; set; }
-	
-	    [Phone]
-	    public string DaytimePhone { get; set; }
-	
-	    [EmailAddress, StringLength(256)]
-	    public string EmailAddress { get; set; }
+		 [Key]
+		 public int Id { get; set; }
+
+		 [Required]
+		 public string FirstName { get; set; }
+
+		 [Required]
+		 public string LastName { get; set; }
+
+		 [Range(0, 130)]
+		 public int Age { get; set; }
+
+		 public Address Address { get; set; }
+
+		 [Phone]
+		 public string DaytimePhone { get; set; }
+
+		 [EmailAddress, StringLength(256)]
+		 public string EmailAddress { get; set; }
 	  }
 	}
 	````
@@ -754,8 +741,6 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 
 1. Add a **ValidationSummary** control at the end of the CustomerDetails page to show the list of model errors.
 
-	(Code Snippet - _Web Forms Lab - Ex02 - ValidationSummary_)
-
 	````HTML
 	      </fieldset>
 	    </InsertItemTemplate>
@@ -799,7 +784,7 @@ In this task, you will add code to properly handle database exceptions and show 
 
 	The new **TryUpdateModel** method updates the category object retrieved from the database using the form data provided by the user.
 
-	(Code Snippet - _Web Forms Lab - Ex01 - UpdateCategory Handle Errors_)
+	(Code Snippet - _Web Forms Lab - Ex03 - UpdateCategory Handle Errors_)
 
 	<!-- mark:9-18 -->
 	````C#
@@ -828,8 +813,6 @@ In this task, you will add code to properly handle database exceptions and show 
 	> **Note:** Ideally, you would have to identify the cause of the DbUpdateException and check if the root cause is the violation of a unique key constraint.
 
 1. Open **Products.aspx** and add a **ValidationSummary** control below the categories GridView to show the list of model errors.
-
-	(Code Snippet - _Web Forms Lab - Ex02 - Categories ValidationSummary_)
 
 	<!-- mark:5 -->
 	````HTML
@@ -911,7 +894,7 @@ The request validation feature in ASP.NET provides a certain level of default pr
 	> **Note:** **Please use the HttpRequest.Unvalidated property with caution!** Make sure you carefully perform custom validation on the raw request data to ensure that dangerous text is not round-tripped and rendered back to unsuspecting customers!
 
  
-
+<a name="Exercise3" />
 ### Exercise 3: Asynchronous Page Processing in ASP.NET Web Forms ###
 
 In this exercise, you will be introduced to the new asynchronous page processing features in ASP.NET Web Forms.
@@ -929,8 +912,6 @@ In this task, you will update the product details page to allow the user to spec
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
 1. Open the **ProductDetails.aspx** page source and add a field in the FormView's ItemTemplate to show the product image.
-
-	(Code Snippet - _Web Forms Lab - Ex03 - Show Product Image_)
 
 	<!-- mark:10-14 -->
 	````HTML
@@ -959,8 +940,6 @@ In this task, you will update the product details page to allow the user to spec
 	````
 
 1. Add a field to specify the image URL in the FormView's EditTemplate.
-
-	(Code Snippet - _Web Forms Lab - Ex03 - Edit Image URL_)
 
 	<!-- mark:12-13 -->
 	````HTML
@@ -1065,8 +1044,6 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 1. Add a Label at the bottom of the page to show the details of the threads running the page.
 
-	(Code Snippet - _Web Forms Lab - Ex03 - Threads Message Label_)
-
 	<!-- mark:4 -->
 	````HTML
 	    <EmptyDataTemplate>Product not found</EmptyDataTemplate>
@@ -1114,11 +1091,11 @@ Time-consuming operations on your web site are great candidates for asynchronous
 
 	The RegisterAsyncTask registers a new page asynchronous task to be executed in a different thread. It receives a lambda expression with the Task (t) to be executed. The **await** keyword in the **DownloadFileTaskAsync** method converts the remainder of the method into a callback that is invoked asynchronously after the **DownloadFileTaskAsync** method has completed. ASP.NET will resume the execution of the method by automatically maintaining all the HTTP request original values. The new asynchronous programming model in .NET 4.5 enables you to write asynchronous code that looks very much like synchronous code, and let the compiler handle the complications of callback functions or continuation code. **Note:** RegisterAsyncTask and PageAsyncTask were already available since .NET 2.0. The await keyword is new from the .NET 4.5 asynchronous programming model and can be used together with the new TaskAsync methods from the .NET WebClient object.
 
-1. Add code to display the threads on which the code started and finished executing.
+1. Add code to display the threads on which the code started and finished executing. To do this, replace the **UpdateProductImage** method with the following code.
 
 	(Code Snippet - _Web Forms Lab - Ex03 - Show threads_)
 
-	<!-- mark:13,21-25 -->
+	<!-- mark:1-28 -->
 	````C#
 	private void UpdateProductImage(Product product)
 	{
