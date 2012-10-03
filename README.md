@@ -4,7 +4,9 @@
 
 ### Introduction ###
 
-This Hands-On Lab is a step-by-step guide that is designed to help you learn the new features available in ASP.NET 4.5 Web Forms. It provides instructions to guide you through the process of developing a complete application.
+These Hands-On Labs are sets of step-by-step guides that are designed to help you learn Visual Studio 2012, ASP.NET 4.5 WebForms and ASP.NET MVC 4. Each Lab provides instructions to guide you through the process of developing a Web application.
+
+ASP.NET Web Forms 4.5 introduces a number of improvements focused on improving the experience when working with data. These include strongly-typed data controls, model binding capabilities, new request validation features and asynchronous page processing enhancements. In this lab, you will get a chance to try out these new features and learn how they work.
 
 ### Repository Structure ###
 

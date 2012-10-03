@@ -1,8 +1,12 @@
-﻿#What's New in Web Forms in ASP.NET 4.5#
+﻿<a name="HOLTop" />
 
+# What's New in Web Forms in ASP.NET 4.5 #
+---
+
+<a name="Overview" />
 ## Overview ##
 
-The upcoming version of ASP.NET Web Forms introduces a number of improvements focused on improving user experience when working with data.
+The new version of ASP.NET Web Forms introduces a number of improvements focused on improving user experience when working with data.
 
 In previous versions of Web Forms, when using data-binding to emit the value of an object member, you used the data-binding expressions Bind() or Eval(). In the new version of ASP.NET, you are able to declare what type of data a control is going to be bound to by using a new ItemType property. Setting this property will enable you to use a strongly-typed variable to receive the full benefits of the Visual Studio development experience, such as IntelliSense, member navigation, and compile-time checking.
 
@@ -46,14 +50,22 @@ In this hands-on lab, you will learn how to:
 - Implement asynchronous page processing in Web Forms
 
  
+<a name="Prerequisites" />
 ### Prerequisites ###
+
+You must have the following items to complete this lab:
 
 - [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix A](#AppendixA) for instructions on how to install it).
 
- 
-### Installing Code Snippets ###
 
-For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Setup\CodeSnippets.vsi** file.
+<a name="Setup" /> 
+### Setup ###
+
+**Installing Code Snippets**
+
+For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Assets\CodeSnippets.vsi** file.
+
+If you are not familiar with the Visual Studio Code Snippets, and want to learn how to use them, you can refer to the appendix from this document "[Appendix C: Using Code Snippets](#AppendixC)".
 
 ## Exercises ##
 
@@ -65,9 +77,9 @@ This hands-on lab includes the following exercises:
 
 1. [Exercise 3: Asynchronous Page Processing in ASP.NET Web Forms](#Exercise3)
 
-> **Note:** Each exercise is accompanied by a starting solution-located in the **Begin** folder of the exercise-that allows you to follow each exercise independently of the others. Please be aware that the code snippets that are added during an exercise are missing from these starting solutions and that they will not necessarily work until you complete the exercise.
+> **Note:** Each exercise is accompanied by an **End** folder containing the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
 
-> Inside the source code for an exercise, you will also find an **End** folder containing a Visual Studio solution with the code that results from completing the steps in the corresponding exercise. You can use these solutions as guidance if you need additional help as you work throughout this hands-on lab.
+Estimated time to complete this lab: **60 minutes**.
 
 <a name="Exercise1" />
 ### Exercise 1: Model Binding in ASP.NET Web Forms ###
@@ -78,13 +90,16 @@ The new version of ASP.NET Web Forms introduces a number of enhancements focused
 
 In this task, you will discover the new strongly-typed bindings available in ASP.NET 4.5.
 
-1. Open **Visual Studio 2012** and open the **WebFormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-ModelBinding\Begin** folder of this lab.
+1. Open the **Begin** solution located at **Source/Ex1-ModelBinding/Begin/** folder.
 
-1. In the Solution Explorer, click the **WebFormsLab** project and select **Manage NuGet Packages**.
+	1. You will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
-1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
-1. Build the solution by clicking **Build** | **Build Solution**.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
+
 
 1. Open the **Customers.aspx** page. Place an unnumbered list in the main control and include a repeater control inside for listing each customer. Set the repeater name to **customersRepeater** as shown in the following code.
 
@@ -322,7 +337,7 @@ Model binding not only enables you to specify custom methods to work with your d
 
 - Custom value providers are supported as well
 
-If you have used ASP.NET MVC, you will notice the model binding support is similar. Indeed, these features were taken from ASP.NET MVC and moved into the **System.Web** assembly to be able to use them on Web Forms as well.
+If you have used ASP.NET MVC 4, you will notice the model binding support is similar. Indeed, these features were taken from ASP.NET MVC and moved into the **System.Web** assembly to be able to use them on Web Forms as well.
 
 In this task, you will update the GridView to filter its results by the amount of products for each category, receiving the filter parameter with model binding.
 
@@ -580,10 +595,12 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
+	
 1. Press **F5** to start the web application. Go to the Customers page and click the **Add a New Customer** link.
 
 1. Right-click on the browser page, and select **View Source** option to open the HTML code generated by the application.
@@ -907,10 +924,12 @@ In this task, you will update the product details page to allow the user to spec
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project and select **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
+	
 1. Open the **ProductDetails.aspx** page source and add a field in the FormView's ItemTemplate to show the product image.
 
 	<!-- mark:10-14 -->
@@ -1139,6 +1158,10 @@ Time-consuming operations on your web site are great candidates for asynchronous
  
 	_Downloading an image asynchronously_
 
+
+>**Note:** Additionally, you can deploy this application to Windows Azure Web Sites following [Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy](#AppendixB).
+
+---
 
 ## Summary ##
 
