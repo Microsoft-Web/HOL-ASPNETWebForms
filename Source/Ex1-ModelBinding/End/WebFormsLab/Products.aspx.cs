@@ -12,10 +12,6 @@
     {
         private ProductsContext db = new ProductsContext();
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-        }
-
         public IQueryable<Category> GetCategories([Control]int? minProductsCount)
         {
             var query = this.db.Categories
@@ -29,7 +25,7 @@
             return query;
         }
 
-        public IEnumerable<WebFormsLab.Model.Product> GetProducts([Control("categoriesGrid")]int? categoryId)
+        public IEnumerable<Product> GetProducts([Control("categoriesGrid")]int? categoryId)
         {
             return this.db.Products.Where(p => p.CategoryId == categoryId);
         }
@@ -38,12 +34,16 @@
         {
             var category = this.db.Categories.Find(categoryId);
 
-            TryUpdateModel(category);
+            this.TryUpdateModel(category);
 
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 this.db.SaveChanges();
             }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
         }
     }
 }

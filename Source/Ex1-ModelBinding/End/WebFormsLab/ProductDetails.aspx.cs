@@ -17,9 +17,9 @@
         {
             var product = this.db.Products.Find(productID);
 
-            TryUpdateModel(product);
+            this.TryUpdateModel(product);
 
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 this.db.SaveChanges();
             }

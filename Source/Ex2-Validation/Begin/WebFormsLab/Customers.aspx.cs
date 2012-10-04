@@ -2,8 +2,9 @@
 {
     using System;
     using System.Linq;
+    using System.Web.UI;
 
-    public partial class Customers : System.Web.UI.Page
+    public partial class Customers : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

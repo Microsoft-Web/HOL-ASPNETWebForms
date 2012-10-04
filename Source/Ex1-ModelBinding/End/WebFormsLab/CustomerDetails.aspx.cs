@@ -21,9 +21,9 @@
             using (var db = new ProductsContext())
             {
                 var customer = db.Customers.Find(id);
-                TryUpdateModel(customer);
+                this.TryUpdateModel(customer);
 
-                if (ModelState.IsValid)
+                if (this.ModelState.IsValid)
                 {
                     db.SaveChanges();
                 }
@@ -32,20 +32,20 @@
 
         public void SaveCustomer(Customer customer)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                using (var db = new WebFormsLab.Model.ProductsContext())
+                using (var db = new ProductsContext())
                 {
                     db.Customers.Add(customer);
                     db.SaveChanges();
-                    Response.Redirect("~/Customers.aspx");
+                    this.Response.Redirect("~/Customers.aspx");
                 }
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Page.ClientQueryString))
+            if (string.IsNullOrEmpty(this.Page.ClientQueryString))
             {
                 this.fvDataBinding.ChangeMode(FormViewMode.Insert);
             }

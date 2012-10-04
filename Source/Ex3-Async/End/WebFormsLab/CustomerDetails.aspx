@@ -33,12 +33,10 @@
      <EditItemTemplate>
         <fieldset>
             <p><asp:Label runat="server" AssociatedControlID="firstName">First Name: </asp:Label></p>
-            <p><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' />
-			</p>
+            <p><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' /></p>
 
             <p><asp:Label runat="server" AssociatedControlID="lastName">Last Name: </asp:Label></p>
-            <p><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
-            </p>
+            <p><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' /></p>
 
             <p><asp:Label runat="server" AssociatedControlID="Age">Age: </asp:Label></p>
             <p><asp:TextBox ID="age" runat="server" Text='<%#: BindItem.Age %>' /></p>
@@ -59,12 +57,10 @@
      <InsertItemTemplate>        
         <fieldset>
             <p><asp:Label runat="server" AssociatedControlID="firstName">First Name: </asp:Label></p>
-            <p><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' />			
-			</p>
+            <p><asp:TextBox runat="server" ID="firstName" Text='<%#: BindItem.FirstName %>' /></p>
 
             <p><asp:Label runat="server" AssociatedControlID="lastName">Last Name: </asp:Label></p>                
-			<p><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' />
-			</p>
+			<p><asp:TextBox runat="server" ID="lastName" Text='<%#: BindItem.LastName %>' /></p>
 
             <p><asp:Label runat="server" AssociatedControlID="Age">Age: </asp:Label></p>
             <p><asp:TextBox ID="age" runat="server" Text='<%#: BindItem.Age %>' /></p>
@@ -82,6 +78,7 @@
          </fieldset>                              
         </InsertItemTemplate>            
     </asp:FormView>
-    <asp:ValidationSummary runat="server" ShowModelStateErrors="true" 
-       ForeColor="Red" HeaderText="Please check the following errors:"/>
+
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowModelStateErrors="true" 
+        ForeColor="Red" HeaderText="Please check the following errors:"/>
 </asp:Content>

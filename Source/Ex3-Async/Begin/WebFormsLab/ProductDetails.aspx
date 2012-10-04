@@ -12,7 +12,7 @@
             <fieldset>
                 <p><b><asp:Label ID="Label2" runat="server" AssociatedControlID="itemProductName">Name:</asp:Label></b></p>
                 <p><asp:Label runat="server" ID="itemProductName" Text='<%#: Item.ProductName %>' /></p>
-                <p><b><asp:Label ID="Label3" runat="server" AssociatedControlID="itemDescription">Description (HTML):</asp:Label></b></p>
+                <p><b><asp:Label ID="Label3" runat="server" AssociatedControlID="itemDescription" ValidateRequestMode="Disabled">Description (HTML):</asp:Label></b></p>
                 <p><asp:Label runat="server" ID="itemDescription" Text='<%# Item.Description %>' /></p>
                 <p><b><asp:Label ID="Label4" runat="server" AssociatedControlID="itemUnitPrice">Price:</asp:Label></b></p>
                 <p><asp:Label runat="server" ID="itemUnitPrice" Text='<%#: Item.UnitPrice %>' /></p>
@@ -30,8 +30,7 @@
                 <p><asp:TextBox runat="server" ID="ProductName" Text='<%#: BindItem.ProductName %>' /></p>
                 <p><asp:Label ID="Label3" runat="server" AssociatedControlID="Description">Description (HTML):</asp:Label></p>
                 <p>
-                    <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" Cols="60" Rows="8" Text='<%# BindItem.Description %>'
-                        ValidateRequestMode="Disabled" />
+                    <asp:TextBox runat="server" ID="Description" TextMode="MultiLine" Cols="60" Rows="8" Text='<%# BindItem.Description %>'  ValidateRequestMode="Disabled"/>
                 </p>
                 <p><asp:Label ID="Label4" runat="server" AssociatedControlID="UnitPrice">Price:</asp:Label></p>
                 <p><asp:TextBox runat="server" ID="UnitPrice" Text='<%#: BindItem.UnitPrice %>' /></p>

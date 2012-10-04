@@ -1,15 +1,17 @@
 namespace WebFormsLab.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
-    using System;
 
     public class ProductsDatabaseInitializer : DropCreateDatabaseAlways<ProductsContext>
     {
         protected override void Seed(ProductsContext context)
         {
-            if(context == null)
+            if (context == null)
+            {
                 throw new ArgumentNullException("context");
+            }
 
             context.Database.ExecuteSqlCommand("ALTER TABLE Categories ADD CONSTRAINT uc_categoryName UNIQUE NONCLUSTERED (CategoryName)");
 
@@ -177,6 +179,7 @@ namespace WebFormsLab.Model
                     },
                 },
             };
+
             return customers;
         }
 

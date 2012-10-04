@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace WebFormsLab.Account
+﻿namespace WebFormsLab.Account
 {
+    using System;
+    using System.Web;
+    using System.Web.UI;
+
     public partial class Login : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register.aspx";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+            this.RegisterHyperLink.NavigateUrl = "Register.aspx";
+            this.OpenAuthLogin.ReturnUrl = this.Request.QueryString["ReturnUrl"];
 
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-            if (!String.IsNullOrEmpty(returnUrl))
+            if (!string.IsNullOrEmpty(returnUrl))
             {
-                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+                this.RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
         }
     }

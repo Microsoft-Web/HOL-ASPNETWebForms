@@ -6,16 +6,16 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Customers</h3>
     <ul>
-        <asp:Repeater ID="customersRepeater" 
-	                  ItemType="WebFormsLab.Model.Customer"
+        <asp:Repeater ID="customersRepeater"
+                      ItemType="WebFormsLab.Model.Customer" 
                       runat="server">
-	        <ItemTemplate>
-	            <li>
-	                <a href="CustomerDetails.aspx?id=<%#: Item.Id %>">
-	                    <%#: Item.FirstName %> <%#: Item.LastName %>
-	                </a>
-	            </li>
-	        </ItemTemplate>
+            <ItemTemplate>
+                <li>
+                  <a href="CustomerDetails.aspx?id=<%#: Item.Id %>">
+                    <%#: Item.FirstName %> <%#: Item.LastName %>
+                  </a>
+                </li>
+            </ItemTemplate>
         </asp:Repeater>
     </ul>
 	<a href="CustomerDetails.aspx">Add a New Customer</a>

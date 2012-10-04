@@ -28,8 +28,8 @@
                     
                 </li>
             </ol>
-            <asp:Button runat="server" Text="Log in" ValidationGroup="NewUser" OnClick="logIn_Click" />
-            <asp:Button runat="server" Text="Cancel" CausesValidation="false" OnClick="cancel_Click" />
+            <asp:Button runat="server" Text="Log in" ValidationGroup="NewUser" OnClick="LogInClick" />
+            <asp:Button runat="server" Text="Cancel" CausesValidation="false" OnClick="CancelClick" />
         </fieldset>
     </asp:PlaceHolder>
 </asp:Content>

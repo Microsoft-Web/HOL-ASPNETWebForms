@@ -43,7 +43,7 @@
                             ValidationGroup="SetPassword" />
                     </li>
                 </ol>
-                <asp:Button runat="server" Text="Set Password" ValidationGroup="SetPassword" OnClick="setPassword_Click" />
+                <asp:Button runat="server" Text="Set Password" ValidationGroup="SetPassword" OnClick="SetPasswordClick" />
             </fieldset>
         </asp:PlaceHolder>
 

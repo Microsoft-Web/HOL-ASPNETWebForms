@@ -15,7 +15,7 @@
 </head>
 <body>
     <form runat="server">
-    <asp:ScriptManager EnableCdn="True" runat="server">
+    <asp:ScriptManager runat="server">
         <Scripts>
             <%--Framework Scripts--%>
             <asp:ScriptReference Name="MsAjaxBundle" />
