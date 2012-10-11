@@ -651,7 +651,7 @@ In this section, you will enable unobtrusive validation in ASP.NET to compare th
  
 	_Loading the jQuery JavaScript files directly from the local IIS server_
 
-1. Close the browser to return to Visual Studio. Open the **Site.Master** file again and locate the **ScriptManager**. Add the atribute **EnableCdn** property with the value **True**. This will force jQuery to be loaded from the online URL, not from the local site's URL. 
+1. Close the browser to return to Visual Studio. Open the **Site.Master** file again and locate the **ScriptManager**. Add the attribute **EnableCdn** property with the value **True**. This will force jQuery to be loaded from the online URL, not from the local site's URL. 
 
 1. Open **CustomerDetails.aspx** in Visual Studio. Press the F5 key to run the site. Once Internet Explorer opens, press the F12 key to open the developer tools. Select the **Script** tab, and then take a look at the drop-down list. Note the jQuery JavaScript files are no longer being loaded from the local site, but rather from the online jQuery CDN. 	
 
