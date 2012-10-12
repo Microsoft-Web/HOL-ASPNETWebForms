@@ -764,7 +764,7 @@ ASP.NET 4.5 introduces data annotations validation for Web Forms. Instead of hav
 	{
 	  if (this.ModelState.IsValid)
 	  { 
-	    using (var db = new WebFormsLab.Model.ProductsContext())
+	    using (var db = new ProductsContext())
 	    {
 	       ...
 	````
@@ -815,7 +815,7 @@ In this task, you will add code to properly handle database exceptions and show 
 
 	The new **TryUpdateModel** method updates the category object retrieved from the database using the form data provided by the user.
 
-	(Code Snippet - _Web Forms Lab - Ex03 - UpdateCategory Handle Errors_)
+	(Code Snippet - _Web Forms Lab - Ex02 - UpdateCategory Handle Errors_)
 
 	<!-- mark:9-18 -->
 	````C#
