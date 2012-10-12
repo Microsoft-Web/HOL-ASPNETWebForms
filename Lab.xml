@@ -9,6 +9,7 @@
   <Title>What's New in Web Forms in ASP.NET 4.5</Title>
   <Version>1.3.0</Version>
   <Source>.\Source</Source>
+  <DependencyChecker>.\Source\Setup\Dependencies.depi</DependencyChecker>
   <Technologies>
     <Technology>Visual Studio</Technology>
     <Technology>.NET Framework</Technology>
